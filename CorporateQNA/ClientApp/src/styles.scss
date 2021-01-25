@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+    height: 100% !important;
+    width: 100% !important;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+//FONT SIZES
+.font-size{
+    &-10px{
+        font-size: 10px;
+    }
+    &-11px{
+        font-size: 11px;
+    }
+    &-12px{
+        font-size: 12px;
+    }
+    &-13px{
+        font-size: 13px;
+    }
+}
+
+// sidebar
+.side-bar{
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: inline-block;
+    background-color: #565357;
+    max-width: 100px;
+    
+    & .keka-logo{
+        width: 70px;
+    }
+    &>li:first-child{
+        background-color: #452863;
+    }
+    &>li{
+        padding: 15px 15px;
+        text-align: center;
+    }
+    &>li:not(:first-child):hover{
+        cursor: pointer;
+        background-color: #8e8b8f;
+    }
+}
+
+//TOP BAR
+.top-bar{
+    padding: 20px 0px;
+}
