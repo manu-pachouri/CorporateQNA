@@ -8,9 +8,10 @@ import { Icons } from 'src/app/shared/font-awesome-icons';
   ]
 })
 export class QnaListComponent implements OnInit {
-  integers = [1,2,3,4,5];
+  questions = [1,2,3,4,5];
+  answers = [1,2];
   Icons = new Icons();
-  
+
   constructor() { }
 
   ngOnInit(): void {

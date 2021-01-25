@@ -1,4 +1,4 @@
-import { faAngleUp, faCommentsDollar, faExclamation, faEye, faPlus, faRedoAlt, faSearch, faSun, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faCommentsDollar, faExclamation, faEye, faPlus, faRedoAlt, faSearch, faSun, faThumbsDown, faThumbsUp, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export class Icons{
     sun = faSun;
@@ -10,5 +10,7 @@ export class Icons{
     eye = faEye;
     angleUp = faAngleUp;
     exclamation = faExclamation;
+    thumbsUp = faThumbsUp;
+    thumbsDown = faThumbsDown;
 }
 

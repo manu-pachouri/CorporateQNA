@@ -11,6 +11,8 @@ body{
 
 $purple-dark:#55337a;
 
+//colors
+
 //FONT SIZES
 .font-size{
     &-10px{
@@ -96,6 +98,17 @@ $purple-dark:#55337a;
 .question-card{
     &:hover,&:active{
         background-image: linear-gradient(to right,#f7f7f7 0%,#f7f7f7 99%,$purple-dark 99%,$purple-dark 100%);
+        cursor: pointer;
+    }
+}
+
+.thumbs{
+    &-up:hover , &-up-active{
+        color: #31c731;
+        cursor: pointer;
+    }
+    &-down:hover, &-down-active{
+        color: rgb(214, 57, 57);
         cursor: pointer;
     }
 }
