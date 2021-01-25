@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
+import { Icons } from '../font-awesome-icons';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,7 +8,7 @@ import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
   ]
 })
 export class SideBarComponent implements OnInit {
-  faComment = faCommentsDollar;
+  Icons = new Icons();
 
   constructor() { }
 

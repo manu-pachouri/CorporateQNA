@@ -9,6 +9,8 @@ body{
     padding: 0;
 }
 
+$purple-dark:#55337a;
+
 //FONT SIZES
 .font-size{
     &-10px{
@@ -23,6 +25,51 @@ body{
     &-13px{
         font-size: 13px;
     }
+    &-14px{
+        font-size: 13px;
+    }
+    &-15px{
+        font-size: 13px;
+    }
+}
+
+//common css
+.cursor-ptr:hover{
+    cursor: pointer;
+}
+
+.button{
+    border-radius: 5%;
+    background-color: #7d58a5;
+    color: whitesmoke;
+    border: 0;
+    padding: 10px 15px;
+    &:hover{
+        cursor: pointer;
+        background-color:  #544169;
+    }
+}
+
+
+.input{
+    border-radius: 10%;
+    background-color: whitesmoke;
+}
+
+//keka logo
+.keka-logo{
+    width: 100px;
+    background-color: #55337a;
+    padding: 20px 15px;
+}
+//TOP BAR
+.top-bar{
+    background-color: #7d58a5;
+}
+
+.user-icon{
+    width: 50px;
+    height: 50px;
 }
 
 // sidebar
@@ -31,27 +78,24 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
-    display: inline-block;
+    display: block;
     background-color: #565357;
-    max-width: 100px;
-    
-    & .keka-logo{
-        width: 70px;
-    }
-    &>li:first-child{
-        background-color: #452863;
-    }
+
     &>li{
+        width: 100px;
         padding: 15px 15px;
         text-align: center;
     }
-    &>li:not(:first-child):hover{
+    &>li:hover{
         cursor: pointer;
         background-color: #8e8b8f;
     }
 }
 
-//TOP BAR
-.top-bar{
-    padding: 20px 0px;
+//question card
+.question-card{
+    &:hover,&:active{
+        background-image: linear-gradient(to right,#f7f7f7 0%,#f7f7f7 99%,$purple-dark 99%,$purple-dark 100%);
+        cursor: pointer;
+    }
 }

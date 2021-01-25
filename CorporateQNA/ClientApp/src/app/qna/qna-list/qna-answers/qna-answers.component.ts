@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-top-bar',
-  templateUrl: './top-bar.component.html',
+  selector: 'app-qna-answers',
+  templateUrl: './qna-answers.component.html',
   styles: [
   ]
 })
-export class TopBarComponent implements OnInit {
+export class QnaAnswersComponent implements OnInit {
 
   constructor() { }
 
