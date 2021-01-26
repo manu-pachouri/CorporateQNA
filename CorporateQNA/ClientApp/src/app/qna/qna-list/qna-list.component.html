@@ -1,38 +1,69 @@
-<div class="d-flex bg-light pl-3 pr-3 py-3">
-    <div class="col-sm-7 mr-0 p-0">
+<div class="d-flex bg-light p-0 m-3 border">
+    <div class="col-sm-7 mr-0 p-0 bg-white">
         <div *ngFor="let i of questions">
             <app-qna-card></app-qna-card>
         </div>
     </div>
     <div class="col-sm-5 m-0 p-0">
-        <div class="border pt-3 px-3 pb-0">
+        <div class="border-bottom pt-3 px-3 pb-0">
             <div>
                 <div class="d-flex align-items-center font-size-11px">
-                    <img src="../../../../assets/images/usericon.png" alt="John Doe" class="img-fluid rounded-circle"
+                    <img src="https://i.pravatar.cc/300" alt="John Doe" class="img-fluid rounded-circle"
                         style="width: 30px" />
                     <div class="pl-3">
                         4hrs Ago
                     </div>
-                    <div class="ml-auto">
-                        <fa-icon [icon]="Icons.exclamation"></fa-icon>
+                    <div class="ml-auto cursor-ptr">
+                        <fa-icon [icon]="Icons.exclamation" style="color: red;"></fa-icon>
                         Report this
                     </div>
                 </div>
                 <div class="">
                     <p>
-                        why does G Fortran produces large stack size compared to C++ in this simple problem and what are the alternatives?
+                        Why does G Fortran produces large stack size compared to C++ in this simple problem and what are
+                        the alternatives?
                     </p>
                     <p class="font-size-13px">
-                        Placeholder text to use in your graphic,print and web layouts and discover plugins for your favourite writing,design and blogging tools.Placeholder text to use in your graphic,print and web layouts and discover plugins for your favourite writing,design and blogging tools  
+                        Placeholder text to use in your graphic,print and web layouts and discover plugins for your
+                        favourite writing,design and blogging tools.Placeholder text to use in your graphic,print and
+                        web layouts and discover plugins for your favourite writing,design and blogging tools
                     </p>
                 </div>
             </div>
         </div>
         <div style="background-color: #cccbcb;" class="py-1 pl-3 font-weight-bolder">
-            ANSWERS
+            ANSWERS (3)
         </div>
         <div>
             <app-qna-answers *ngFor="let ans of answers"></app-qna-answers>
         </div>
+        <form class="NgxEditor__Wrapper font-size-13px ml-3" style="position: relative; margin-top: 50px;"
+            [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor [editor]="editor" editable="true" [placeholder]="html" formControlName="editorContent">
+            </ngx-editor>
+            <div class="d-flex align-items-center">
+                <fa-icon [icon]="Icons.expand" size="2x" class="pl-2 cursor-ptr" (click)="openModal(modal); "></fa-icon>
+                <button type="submit" class="button ml-auto">
+                    <fa-icon [icon]="Icons.send"></fa-icon>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
+
+
+<!-- modal -->
+<ng-template #modal>
+    <div style="width: 600px;">
+        <div class="d-flex dark-purple text-white w-100">
+            <h4 class="">Large modal</h4>
+            <button type="button" class="close ml-auto pr-2" aria-label="Close">
+                <span aria-hidden="true" class="text-white" (click)="closeModal()">&times;</span>
+            </button>
+        </div>
+        <div class="w-100">
+            dasda
+        </div>
+    </div>
+</ng-template>

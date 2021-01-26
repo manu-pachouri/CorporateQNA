@@ -10,6 +10,10 @@ const routes: Routes = [
   {
   path:"home",
   loadChildren:()=>import('./qna/qna.module').then(m=>m.QnaModule)
+  },
+  {
+    path:"categories",
+    loadChildren:()=>import('./categories/categories.module').then(m=>m.CategoriesModule)
   }
 ];
 

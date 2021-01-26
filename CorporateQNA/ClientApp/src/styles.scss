@@ -1,114 +1,175 @@
 /* You can add global styles to this file, and also import other style files */
-html,body{
-    height: 100% !important;
-    width: 100% !important;
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+//color
+$dark-purple: #55337a;
+$parrot-green: #31c731;
+$btn-color:#7d58a5;
+
+.dark-purple{
+  background-color: #55337a;
 }
-
-$purple-dark:#55337a;
-
-//colors
 
 //FONT SIZES
-.font-size{
-    &-10px{
-        font-size: 10px;
-    }
-    &-11px{
-        font-size: 11px;
-    }
-    &-12px{
-        font-size: 12px;
-    }
-    &-13px{
-        font-size: 13px;
-    }
-    &-14px{
-        font-size: 13px;
-    }
-    &-15px{
-        font-size: 13px;
-    }
+.font-size {
+  &-10px {
+    font-size: 10px;
+  }
+  &-11px {
+    font-size: 11px;
+  }
+  &-12px {
+    font-size: 12px;
+  }
+  &-13px {
+    font-size: 13px;
+  }
+  &-14px {
+    font-size: 13px;
+  }
+  &-15px {
+    font-size: 13px;
+  }
 }
 
 //common css
-.cursor-ptr:hover{
+.cursor-ptr:hover {
+  cursor: pointer;
+}
+
+.button {
+  border-radius: 5%;
+  background-color: $btn-color;
+  color: whitesmoke;
+  border: 0;
+  padding: 10px 15px;
+  &:hover {
     cursor: pointer;
+    background-color: #544169;
+  }
 }
 
-.button{
-    border-radius: 5%;
-    background-color: #7d58a5;
-    color: whitesmoke;
-    border: 0;
-    padding: 10px 15px;
-    &:hover{
-        cursor: pointer;
-        background-color:  #544169;
-    }
-}
-
-
-.input{
-    border-radius: 10%;
-    background-color: whitesmoke;
+.input {
+  border-radius: 10%;
+  background-color: whitesmoke;
 }
 
 //keka logo
-.keka-logo{
-    width: 100px;
-    background-color: #55337a;
-    padding: 20px 15px;
+.keka-logo {
+  width: 100px;
+  background-color: #55337a;
+  padding: 20px 15px;
 }
 //TOP BAR
-.top-bar{
-    background-color: #7d58a5;
+.top-bar {
+  background-color: #7d58a5;
 }
 
-.user-icon{
-    width: 50px;
-    height: 50px;
+.user-icon {
+  width: 50px;
+  height: 50px;
 }
 
 // sidebar
-.side-bar{
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: block;
-    background-color: #565357;
+.side-bar {
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: block;
+  background-color: #565357;
 
-    &>li{
-        width: 100px;
-        padding: 15px 15px;
-        text-align: center;
-    }
-    &>li:hover{
-        cursor: pointer;
-        background-color: #8e8b8f;
-    }
+  & > li {
+    width: 100px;
+    padding: 15px 15px;
+    text-align: center;
+  }
+  & > li:hover {
+    cursor: pointer;
+    background-color: #8e8b8f;
+  }
+}
+
+//navigation bar
+.navigation-link{
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  position: relative;
+  overflow: hidden;
+  &:hover::after,&-active::after{
+    content:'';
+    position: absolute;
+    bottom: -5px;
+    left: 40%;
+    display: block;
+    width:10px;  
+    height: 10px;
+    transform: rotate(45deg);
+    background-color: $dark-purple;
+  }
+  &::before{
+  }
 }
 
 //question card
-.question-card{
-    &:hover,&:active{
-        background-image: linear-gradient(to right,#f7f7f7 0%,#f7f7f7 99%,$purple-dark 99%,$purple-dark 100%);
-        cursor: pointer;
+.question {
+    position: relative;
+    overflow: hidden;
+  &-resolved{
+      position:absolute;
+      top: -15px;
+      left: -15px;
+      width: 30px;
+      height: 30px;
+      background-color: $parrot-green;
+      transform: rotate(45deg);
+  }
+  &-card {
+    &:hover,
+    &:active {
+      background-image: linear-gradient(
+        to right,
+        #f7f7f7 0%,
+        #f7f7f7 99%,
+        $dark-purple 99%,
+        $dark-purple 100%
+      );
+      cursor: pointer;
     }
+  }
 }
 
-.thumbs{
-    &-up:hover , &-up-active{
-        color: #31c731;
-        cursor: pointer;
-    }
-    &-down:hover, &-down-active{
-        color: rgb(214, 57, 57);
-        cursor: pointer;
-    }
+.thumbs {
+  &-up:hover,
+  &-up-active {
+    color: $parrot-green;
+    cursor: pointer;
+  }
+  &-down:hover,
+  &-down-active {
+    color: rgb(214, 57, 57);
+    cursor: pointer;
+  }
+}
+
+.checkmark {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  border: 1px solid #adadad;
+  border-radius: 10%;
+}
+
+.check-container input:checked ~ .checkmark {
+  background-image: url(./assets/images/tick-image.jpg);
+  background-size: contain;
+}
+
+.NgxEditor__Wrapper .NgxEditor__Content{
+  height: 140px !important;
 }
