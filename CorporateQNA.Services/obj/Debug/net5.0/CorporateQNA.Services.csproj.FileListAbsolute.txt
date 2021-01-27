@@ -1,0 +1,12 @@
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\CorporateQNA.Services.deps.json
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\CorporateQNA.Services.dll
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\ref\CorporateQNA.Services.dll
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\CorporateQNA.Services.pdb
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.csprojAssemblyReference.cache
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.AssemblyInfoInputs.cache
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.AssemblyInfo.cs
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.dll
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\ref\CorporateQNA.Services.dll
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.pdb

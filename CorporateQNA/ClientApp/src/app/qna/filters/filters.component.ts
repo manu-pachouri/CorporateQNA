@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Editor, Toolbar } from 'ngx-editor';
 import { Icons } from '../../shared/font-awesome-icons';
@@ -24,18 +25,25 @@ export class FiltersComponent implements OnInit {
   ];
   html='';
   ////
+  questionFormGroup:FormGroup;
   constructor(private modalService:BsModalService) { }
 
   ngOnInit(): void {
+    this.questionFormGroup = new FormGroup({
+      question:new FormControl(null,Validators.required),
+      editorContent:new FormControl(null,Validators.required),
+      category:new FormControl(null,Validators.required)
+    });
+  }
+
+  openModal(template:TemplateRef<any>){
     this.editor = new Editor({
       content:`Enter your text here..`,
       enabled:true,
       history:true,
       keyboardShortcuts:true
     });
-  }
-
-  openModal(template:TemplateRef<any>){
+    
     this.modalRef = this.modalService.show(template,{class:'modal-lg'});
   }
 

@@ -15,9 +15,15 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   questions = [1,2,3,4,5];
   answers = [1,2];
   showFilters:boolean = true;
-
+  formGroup:FormGroup;
+  
   //ngx editor 
-  editor:Editor;
+  editor:Editor = new Editor({
+    content:`Enter your Answer here..`,
+    enabled:true,
+    history:true,
+    keyboardShortcuts:true
+  });;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -28,9 +34,9 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   ];
   html='';
   //icons
+
   Icons = new Icons();
   //form
-  formGroup:FormGroup;
 
   //modal
   modalRef:BsModalRef;
@@ -49,13 +55,6 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
     this.formGroup = new FormGroup({
       editorContent: new FormControl(null,Validators.required)
     });
-
-    this.editor = new Editor({
-      content:`Enter your Answer here..`,
-      enabled:true,
-      history:true,
-      keyboardShortcuts:true
-    });
   }
 
   ngDoCheck(){
@@ -72,13 +71,13 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   }
 
   openModal(template:TemplateRef<any>){
+
     this.modalRef = this.modalService.show(template,this.config);
   }
 
   closeModal(){
     this.modalRef.hide();
   }
-
   
 }
 
