@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Editor, Toolbar } from 'ngx-editor';
 import { Icons } from 'src/app/shared/font-awesome-icons';
@@ -10,12 +11,13 @@ import { Icons } from 'src/app/shared/font-awesome-icons';
   styles: [
   ]
 })
-export class QnaListComponent implements OnInit,OnDestroy {
+export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   questions = [1,2,3,4,5];
   answers = [1,2];
+  showFilters:boolean = true;
 
   //ngx editor 
-  editor: Editor;
+  editor:Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
@@ -35,10 +37,12 @@ export class QnaListComponent implements OnInit,OnDestroy {
   config={
     backdrop:false,
     keybodard:true,
-    animated:true
+    animated:true,
+    class:'modal-lg'
   };
 
-  constructor(private modalService:BsModalService) { 
+  constructor(private modalService:BsModalService,
+              private router:Router) { 
   }
 
   ngOnInit(): void {
@@ -54,6 +58,10 @@ export class QnaListComponent implements OnInit,OnDestroy {
     });
   }
 
+  ngDoCheck(){
+    this.showFilters = this.router.url.indexOf('user') == -1;
+  }
+
   ngOnDestroy(){
     this.editor.destroy();
   }
@@ -67,7 +75,7 @@ export class QnaListComponent implements OnInit,OnDestroy {
     this.modalRef = this.modalService.show(template,this.config);
   }
 
-  closeModal(template:TemplateRef<any>){
+  closeModal(){
     this.modalRef.hide();
   }
 

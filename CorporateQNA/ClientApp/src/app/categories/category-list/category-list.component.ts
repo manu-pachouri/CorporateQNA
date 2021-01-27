@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class CategoryListComponent implements OnInit {
-  cards=[1,2,3,4,5,6,7,8];
+  cards=[1,2,3,4,5,6,7];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { faAngleUp, faCommentsDollar, faExclamation, faExpand, faEye, faPlus, faRedoAlt, faSearch, faShare, faSun, faThumbsDown, faThumbsUp, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faArrowLeft, faCommentsDollar, faExclamation, faExpand, faEye, faLongArrowAltLeft, faPlus, faRedoAlt, faSearch, faShare, faSun, faThumbsDown, faThumbsUp, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export class Icons{
     sun = faSun;
@@ -14,5 +14,6 @@ export class Icons{
     thumbsDown = faThumbsDown;
     send =faShare;
     expand = faExpand;
+    goBack = faArrowLeft;
 }
 

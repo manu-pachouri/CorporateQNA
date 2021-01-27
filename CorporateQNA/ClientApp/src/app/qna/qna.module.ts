@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component, ComponentRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { QnaRoutingModule } from './qna-routing.module';
@@ -9,17 +9,26 @@ import { QnaAnswersComponent } from './qna-list/qna-answers/qna-answers.componen
 import { NgxEditorModule } from 'ngx-editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal'
+import { FiltersComponent } from './filters/filters.component';
 
 
 @NgModule({
-  declarations: [QnaListComponent, QnaCardComponent, QnaAnswersComponent],
+  declarations: [QnaListComponent, QnaCardComponent, QnaAnswersComponent,FiltersComponent],
   imports: [
     CommonModule,
     QnaRoutingModule,
     FontAwesomeModule,
-    NgxEditorModule,
+    NgxEditorModule.forRoot({
+      
+    }),
     ReactiveFormsModule,
     ModalModule.forRoot()
   ]
 })
-export class QnaModule { }
+export class QnaModule { 
+  constructor(){}
+
+  public static GetQnaListComp(){
+    return QnaListComponent;
+  }
+}

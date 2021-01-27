@@ -1,17 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-
+html {
+  height: 100%;
+}
 body {
   margin: 0;
-  padding: 0;
 }
 
 //color
-$dark-purple: #55337a;
+$dark-purple: #70588a;
 $parrot-green: #31c731;
-$btn-color:#7d58a5;
+$btn-color: #7d58a5;
+$white-smoke: #f5f5f5;
 
-.dark-purple{
-  background-color: #55337a;
+.dark-purple {
+  background-color: $dark-purple;
+}
+
+.color-keka-logo{
+  color: $dark-purple;
 }
 
 //FONT SIZES
@@ -37,6 +43,16 @@ $btn-color:#7d58a5;
 }
 
 //common css
+.min-width-150px{
+  min-width: 150px;
+}
+input,
+select {
+  font-size: 13px !important;
+  border-radius: 3% !important;
+  border-color: #b8b5b5;
+}
+
 .cursor-ptr:hover {
   cursor: pointer;
 }
@@ -44,7 +60,7 @@ $btn-color:#7d58a5;
 .button {
   border-radius: 5%;
   background-color: $btn-color;
-  color: whitesmoke;
+  color: #f5f5f5;
   border: 0;
   padding: 10px 15px;
   &:hover {
@@ -55,7 +71,7 @@ $btn-color:#7d58a5;
 
 .input {
   border-radius: 10%;
-  background-color: whitesmoke;
+  background-color: $white-smoke;
 }
 
 //keka logo
@@ -66,7 +82,7 @@ $btn-color:#7d58a5;
 }
 //TOP BAR
 .top-bar {
-  background-color: #7d58a5;
+  background-color: $dark-purple;
 }
 
 .user-icon {
@@ -95,38 +111,37 @@ $btn-color:#7d58a5;
 }
 
 //navigation bar
-.navigation-link{
+.navigation-link {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   position: relative;
   overflow: hidden;
-  &:hover::after,&-active::after{
-    content:'';
+  &:hover::after,
+  &-active::after {
+    content: "";
     position: absolute;
     bottom: -5px;
     left: 40%;
     display: block;
-    width:10px;  
+    width: 10px;
     height: 10px;
     transform: rotate(45deg);
     background-color: $dark-purple;
-  }
-  &::before{
   }
 }
 
 //question card
 .question {
-    position: relative;
-    overflow: hidden;
-  &-resolved{
-      position:absolute;
-      top: -15px;
-      left: -15px;
-      width: 30px;
-      height: 30px;
-      background-color: $parrot-green;
-      transform: rotate(45deg);
+  position: relative;
+  overflow: hidden;
+  &-resolved {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: $parrot-green;
+    transform: rotate(45deg);
   }
   &-card {
     &:hover,
@@ -170,6 +185,25 @@ $btn-color:#7d58a5;
   background-size: contain;
 }
 
-.NgxEditor__Wrapper .NgxEditor__Content{
+.NgxEditor__Wrapper .NgxEditor__Content {
   height: 140px !important;
+}
+
+.modal {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.user-info-hover:hover,.user-info-active{ 
+  text-decoration: none;
+  cursor: pointer;
+  background-image: linear-gradient(to bottom,white 0%,white 95%,$dark-purple 95%,$dark-purple 100%);
+}
+
+.modal-content{
+  position: absolute;
+  width: 700px !important;
+  margin: auto;
 }

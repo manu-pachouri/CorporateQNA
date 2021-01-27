@@ -1,0 +1,98 @@
+<ul class="p-0 pt-1 m-0 border-bottom font-size-13px bg-light">
+    <form class="m-0" method="dialog">
+        <div class="form d-flex">
+          <div class="col-sm-3 form-group">
+            <label style="position: relative; width: 280px;">
+                <label>Keywords</label>
+              <input type="text" class="form-control pl-4" placeholder="Search">
+              <fa-icon [icon]="Icons.search" style="position: absolute; bottom: 7px; left: 8px;"></fa-icon>
+            </label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label>Category</label>
+            <select class="form-control">
+                <option>All</option>
+                <option>Asp.Net</option>
+                <option>Java</option>
+                <option>Node Js</option>
+                <option>Dev Opps</option>
+                <option>UX Design</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <label>Show</label>
+            <select class="form-control">
+                <option>All</option>
+                <option>My Questions</option>
+                <option>My Participation</option>
+                <option>Hot</option>
+                <option>Solved</option>
+                <option>UnSolved</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <label>Sort by</label>
+            <select class="form-control">
+                <option>All</option>
+                <option>Recent</option>
+                <option>Last 10 Days</option>
+                <option>Last 30 Days</option>
+            </select>
+          </div>
+          <div class="d-flex align-items-center pl-4 cursor-ptr">
+            <span class="">
+                <fa-icon [icon]="Icons.reload" class="pr-1"></fa-icon>    
+            </span>
+            Reset
+          </div>
+          <div class="ml-auto d-flex align-items-center p-0">
+              <button class="button ml-auto mr-3" (click)="openModal(modal)">
+                  <fa-icon [icon]="Icons.plus" size="sm"></fa-icon>
+                  Question
+              </button>
+          </div>
+        </div>
+      </form>
+</ul>
+
+
+<ng-template #modal>
+  <div>
+    <div class="d-flex modal-header dark-purple text-white">
+      <div>
+        Add Question
+      </div>
+      <button type="button" class="close ml-auto pr-2" aria-label="Close">
+        <span aria-hidden="true" class="text-white" (click)="closeModal()">&times;</span>
+      </button>
+    </div>
+    <form>
+      <div class="modal-body row font-size-13px">
+        <div class="form-group col-sm-7">
+          <label>Question</label>
+          <input type="text" class="form-control" placeholder="Enter Your Question" style="font-size: 13px;">
+        </div>
+        <div class="form-group col-sm-12">
+          <label>Description</label>
+          <div class="NgxEditor__Wrapper font-size-13px">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor [editor]="editor" editable="true" [placeholder]="html" formControlName="editorContent">
+            </ngx-editor>
+          </div>
+        </div>
+        <div class="form-group col-sm-5">
+          <label for="">Category</label>
+          <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+        <div class="d-flex col-sm-12">
+          <button type="button" class="ml-auto button px-3" (click)="closeModal()" style="width: 80px;">Cancel</button>
+          <button class="button px-3 ml-3" style="width: 80px;">Post</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

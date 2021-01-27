@@ -1,3 +1,4 @@
+<app-filters *ngIf="showFilters"></app-filters>
 <div class="d-flex bg-light p-0 m-3 border">
     <div class="col-sm-7 mr-0 p-0 bg-white">
         <div *ngFor="let i of questions">
@@ -8,7 +9,7 @@
         <div class="border-bottom pt-3 px-3 pb-0">
             <div>
                 <div class="d-flex align-items-center font-size-11px">
-                    <img src="https://i.pravatar.cc/300" alt="John Doe" class="img-fluid rounded-circle"
+                    <img src="../../../assets/images/user-image.png" alt="John Doe" class="img-fluid rounded-circle"
                         style="width: 30px" />
                     <div class="pl-3">
                         4hrs Ago
@@ -37,7 +38,7 @@
         <div>
             <app-qna-answers *ngFor="let ans of answers"></app-qna-answers>
         </div>
-        <form class="NgxEditor__Wrapper font-size-13px ml-3" style="position: relative; margin-top: 50px;"
+        <form *ngIf="showFilters" class="NgxEditor__Wrapper font-size-13px ml-3" style="position: relative; margin-top: 50px;"
             [formGroup]="formGroup" (ngSubmit)="onSubmit()">
             <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
             <ngx-editor [editor]="editor" editable="true" [placeholder]="html" formControlName="editorContent">
@@ -55,15 +56,31 @@
 
 <!-- modal -->
 <ng-template #modal>
-    <div style="width: 600px;">
-        <div class="d-flex dark-purple text-white w-100">
-            <h4 class="">Large modal</h4>
-            <button type="button" class="close ml-auto pr-2" aria-label="Close">
-                <span aria-hidden="true" class="text-white" (click)="closeModal()">&times;</span>
-            </button>
-        </div>
-        <div class="w-100">
-            dasda
-        </div>
+  <div>
+    <div class="d-flex modal-header dark-purple text-white">
+      <div>
+        Add Category
+      </div>
+      <button type="button" class="close ml-auto pr-2" aria-label="Close">
+        <span aria-hidden="true" class="text-white" (click)="closeModal()">&times;</span>
+      </button>
     </div>
+    <form>
+      <div class="modal-body row font-size-13px">
+        <div class="form-group col-sm-9">
+          <label>Category Name</label>
+          <input type="text" class="form-control" placeholder="Enter Category Name" style="font-size: 13px;">
+        </div>
+        <div class="form-group col-sm-9">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" placeholder="Enter your text here..">
+          </textarea>
+        </div>
+        <div class="ml-auto mt-4 mr-3 mb-3">
+          <button type="button" class="button px-3" (click)="closeModal()" style="width: 80px;">Cancel</button>
+          <button class="button px-3 ml-2" style="width: 80px;">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </ng-template>

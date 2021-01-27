@@ -1,3 +1,4 @@
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +8,6 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
-import { FiltersComponent } from './shared/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +15,12 @@ import { FiltersComponent } from './shared/filters/filters.component';
     SideBarComponent,
     TopBarComponent,
     NavigationComponent,
-    FiltersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
