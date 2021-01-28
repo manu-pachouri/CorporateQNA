@@ -4,14 +4,14 @@
     "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj",
-        "projectName": "CorporateQNA",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj",
+        "projectName": "CorporateQNA.Models",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,17 +40,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "IdentityServer4": {
+            "Microsoft.AspNetCore.Identity": {
               "target": "Package",
-              "version": "[4.1.1, )"
+              "version": "[2.2.0, )"
             },
-            "IdentityServer4.EntityFramework": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[4.1.1, )"
-            },
-            "IdentityServer4.EntityFramework.Storage": {
-              "target": "Package",
-              "version": "[4.1.1, )"
+              "version": "[5.0.2, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -63,6 +59,198 @@
               "version": "[5.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "PetaPoco": {
+              "target": "Package",
+              "version": "[5.1.306, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\CorporateQNA.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\CorporateQNA.Services.csproj",
+        "projectName": "CorporateQNA.Services",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\CorporateQNA.Services.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj": {
+                "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "IdentityServer4": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj",
+        "projectName": "CorporateQNA",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\CorporateQNA.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj": {
+                "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj"
+              },
+              "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\CorporateQNA.Services.csproj": {
+                "projectPath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Services\\CorporateQNA.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "IdentityServer4": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            },
+            "IdentityServer4.AspNetIdentity": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            },
+            "IdentityServer4.EntityFramework": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            },
+            "IdentityServer4.EntityFramework.Storage": {
+              "target": "Package",
+              "version": "[4.1.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.2, )"
             },

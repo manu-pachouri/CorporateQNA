@@ -18,7 +18,7 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
           redirectUrl: window.location.origin,
           postLogoutRedirectUri: window.location.origin,
           clientId: 'js',
-          scope: 'openid profile api',
+          scope: 'openid profile email api',
           responseType: 'code',
           logLevel: LogLevel.Debug,
       });

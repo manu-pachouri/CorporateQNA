@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
@@ -11,13 +12,23 @@ namespace IdentityServer
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> IdentityResources =>
-            new IdentityResource[]
-            { 
+        public static IEnumerable<IdentityResource> IdentityResources(){
+            var Resource = new IdentityResource("customClaims", "customClaims",new[] { 
+                      JwtClaimTypes.Id,
+                      JwtClaimTypes.Name,
+                      JwtClaimTypes.Picture,
+                      JwtClaimTypes.Email
+            });
+
+            return new IdentityResource[]
+            {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email()
+                new IdentityResources.Email(),
+                Resource
             };
+
+        }
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
@@ -28,32 +39,6 @@ namespace IdentityServer
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
-                new Client
-                {
-                    ClientId = "client",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "api" }
-                },
-                new Client
-                {
-                    ClientId = "client_mvc",
-                    AllowedGrantTypes = GrantTypes.Code,
-                    ClientSecrets = { new Secret("secret_mvc".Sha256()) },
-                    AllowedScopes = new List<string>
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "api"
-                    },
-                        
-                    AllowOfflineAccess = true,
-
-                    RedirectUris = { "https://localhost:7001/signin-oidc" },
-
-                    PostLogoutRedirectUris = { "https://localhost:7001/signout-callback-oidc" }
-                },
                 new Client
                 {
                     ClientId = "js",
@@ -69,26 +54,16 @@ namespace IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        JwtClaimTypes.Id,
+                        JwtClaimTypes.Name,
+                        JwtClaimTypes.Picture,
+                        JwtClaimTypes.Email,
                         "api"
-                    }
-                }
-            };
+                    },
 
-        public static List<TestUser> GetUsers() =>
-            new List<TestUser>
-            {
-                new TestUser
-                {
-                    SubjectId = "1",
-                    Username = "manu",
-                    Password = "1234"
+                    RefreshTokenExpiration = TokenExpiration.Sliding
+
                 },
-                new TestUser
-                {
-                    SubjectId = "2",
-                    Username = "somu",
-                    Password = "1234"
-                }
             };
     }
 }

@@ -1,0 +1,56 @@
+﻿@model RegisterViewModel
+
+<form asp-action="Register" asp-controller="Auth" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+    <div>
+        <label>FullName</label>
+        <input asp-for="FullName" />
+        <span asp-validation-for="FullName"></span>
+    </div>
+    <div>
+        <label>ImageUrl</label>
+        <input asp-for="ImageUrl" />
+        <span asp-validation-for="ImageUrl"></span>
+    </div>
+    <div>
+        <label>Designation</label>
+        <input asp-for="Designation" />
+        <span asp-validation-for="Designation"></span>
+    </div>
+    <div>
+        <label>Team</label>
+        <input asp-for="Team" />
+        <span asp-validation-for="Team"></span>
+    </div>
+    <div>
+        <label>Role</label>
+        <input asp-for="Role" />
+        <span asp-validation-for="Role"></span>
+    </div>
+    <div>
+        <label>Location</label>
+        <input asp-for="Location" />
+        <span asp-validation-for="Location"></span>
+    </div>
+    <div>
+        <label>UserName</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label>Password</label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label>Confirm Password</label>
+        <input asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+    <a asp-action="Login" asp-controller="Auth" asp-route-returnUrl="@Model.ReturnUrl">
+        Back to Login
+    </a>
+</form>

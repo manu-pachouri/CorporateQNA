@@ -1,0 +1,47 @@
+Questions->
+1.QuestionId
+2.userid
+3.question
+4.Question Description
+5.views
+6.seen
+7.DateTime aksed
+8.Category
+
+Answers->
+1.AnswerId
+2.QuestionId
+3.Answer
+4.Likes 
+5.Dislikes
+6.UpVotes(Marked As Best)
+7.DateTime Answered
+8.UserId
+
+Categories->
+1.Title
+2.Description
+
+
+QuestionViewModel->
+1.Question
+2.Description
+3.Category
+
+CategoryViewModel
+1.CategoryName
+2.CategoryDescription
+
+
+-----------------------------
+CREATE VIEW [UserDataView] as
+select * from IdentityServerDb.dbo.UsersInfo ui join
+IdentityServerDb.dbo.UsersData ud on
+ui.UserId = ud.Id;
+
+SELECT * from [UserDataView];
+
+
+
+
+

@@ -10,3 +10,6 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\obj\Debug\net5.0
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\obj\Debug\net5.0\CorporateQNA.Models.dll
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\obj\Debug\net5.0\ref\CorporateQNA.Models.dll
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\obj\Debug\net5.0\CorporateQNA.Models.pdb
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\bin\Debug\net5.0\CorporateQNA.Models.runtimeconfig.json
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\bin\Debug\net5.0\CorporateQNA.Models.runtimeconfig.dev.json
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Models\obj\Debug\net5.0\CorporateQNA.Models.genruntimeconfig.cache

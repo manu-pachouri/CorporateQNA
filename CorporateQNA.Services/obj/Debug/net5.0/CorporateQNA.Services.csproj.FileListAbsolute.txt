@@ -10,3 +10,6 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.dll
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\ref\CorporateQNA.Services.dll
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.pdb
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\CorporateQNA.Models.dll
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\bin\Debug\net5.0\CorporateQNA.Models.pdb
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA.Services\obj\Debug\net5.0\CorporateQNA.Services.csproj.CopyComplete
