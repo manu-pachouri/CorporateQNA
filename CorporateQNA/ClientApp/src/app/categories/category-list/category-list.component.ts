@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { UserApiService } from './../../Services/user-api-service.service';
+import { CategoryViewModel } from './../../Models/CategoryViewModel';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-list',
@@ -6,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class CategoryListComponent implements OnInit {
-  cards=[1,2,3,4,5,6,7];
-  constructor() { }
+export class CategoryListComponent implements OnInit,DoCheck {
+  categories:CategoryViewModel[] = [];
+  constructor(private apiService:UserApiService) { }
 
   ngOnInit(): void {
+    
   }
+
+  ngDoCheck(){
+    this.apiService.getCategories().subscribe(
+      (response)=>{
+        this.categories = response;
+      }
+    );
+  }  
 
 }

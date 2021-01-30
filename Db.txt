@@ -1,26 +1,53 @@
+UserInfo=>
+1.Id.
+2.FullName.
+3.ImageUrl.
+4.Designation.
+5.Team.
+6.Role.
+7.Location.
+
 Questions->
-1.QuestionId
-2.userid
-3.question
-4.Question Description
-5.views
-6.seen
-7.DateTime aksed
-8.Category
+1.Id
+2.AskedBy
+3.Title
+4.Description
+5.AskedOn(DateTime)
+6.Category
+
+QuestionActivity
+1.Id
+2.QuestionId
+3.Activitystatus
+4.ActivityBy
+5.Views
 
 Answers->
-1.AnswerId
-2.QuestionId
-3.Answer
-4.Likes 
-5.Dislikes
-6.UpVotes(Marked As Best)
-7.DateTime Answered
-8.UserId
+1.Id
+2.AnswerOf
+3.Description
+7.AnsweredOn
+8.AnsweredBy
+
+AnswerActivity=>
+1.Id
+2.UserId
+3.ActivityType(Like/Dislike/MarkAsBest)
 
 Categories->
-1.Title
-2.Description
+1.Id
+2.Title
+3.Description.
+4.AddedBy
+5.AddedOn
+
+
+
+
+
+
+
+
 
 
 QuestionViewModel->
@@ -34,12 +61,55 @@ CategoryViewModel
 
 
 -----------------------------
-CREATE VIEW [UserDataView] as
-select * from IdentityServerDb.dbo.UsersInfo ui join
-IdentityServerDb.dbo.UsersData ud on
-ui.UserId = ud.Id;
+create view GetAllUsers
+as 
+select ud.Id,ud.Dislikes,ud.Likes,ud.QuestionsAnswered,ud.QuestionsAsked,ud.QuestionsSolved
+,ui.FullName,ui.Designation,ui.ImageUrl,ui.Location,ui.Role,ui.Team
+from UsersData ud join UsersInfo ui on 
+ud.Id = ui.Id;
 
-SELECT * from [UserDataView];
+select * from GetAllUsers;
+
+
+select qa.QuestionId,
+count(qa.Viewed) as Views,
+ui.FullName as AskedBy, 
+q.Title as Title,
+q.Description,
+ui.ImageUrl
+from QuestionActivities qa
+join Questions q on q.Id = qa.QuestionId 
+join UsersInfo ui on ui.Id = q.AskedBy
+where qa.Viewed = 1
+group by qa.QuestionId,q.AskedBy,FullName,q.Title,q.Description,ui.ImageUrl;
+
+create view QuestionUpVotes
+as
+select q.Id,
+case
+	when tb.UpVotes is null then 0
+	else tb.UpVotes
+end as UpVotes
+from Questions q left join 
+(select qa.QuestionId,count(*) as UpVotes from QuestionActivities qa
+where qa.Activity = 3
+group by qa.QuestionId) as tb on q.Id=tb.QuestionId;
+
+
+
+select qa.QuestionId,
+count(qa.Viewed) as Views,
+ui.FullName as AskedBy, 
+q.Title as Title,
+q.Description,
+ui.ImageUrl,
+ac.AnswersCount
+from QuestionActivities qa
+join Questions q on q.Id = qa.QuestionId 
+join UsersInfo ui on ui.Id = q.AskedBy
+join AnswersCount ac on ac.Id = q.Id
+where qa.Viewed = 1
+group by qa.QuestionId,q.AskedBy,FullName,q.Title,q.Description,ui.ImageUrl,ac.AnswersCount;
 
 
 

@@ -10,7 +10,7 @@ namespace CorporateQNA.Models
         public UserInfo() { }
         public UserInfo(string userId, RegisterViewModel model)
         {
-            this.UserId = userId;
+            this.Id = userId;
             this.FullName = model.FullName;
             this.ImageUrl = model.ImageUrl;
             this.Designation = model.Designation;
@@ -19,7 +19,7 @@ namespace CorporateQNA.Models
             this.Location = model.Location;
         }
         [Column]
-        public string UserId { get; set; }
+        public string Id { get; set; }
         [Column]
         public string FullName { get; set; }
         [Column]

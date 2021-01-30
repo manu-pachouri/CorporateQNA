@@ -16,7 +16,7 @@ $white-smoke: #f5f5f5;
   background-color: $dark-purple;
 }
 
-.color-keka-logo{
+.color-keka-logo {
   color: $dark-purple;
 }
 
@@ -40,13 +40,18 @@ $white-smoke: #f5f5f5;
   &-15px {
     font-size: 13px;
   }
+  &-16px{
+    font-size: 16px;
+  }
 }
 
 //common css
-.min-width-150px{
+.min-width-150px {
   min-width: 150px;
 }
+
 input,
+textarea,
 select {
   font-size: 13px !important;
   border-radius: 3% !important;
@@ -144,6 +149,7 @@ select {
     transform: rotate(45deg);
   }
   &-card {
+    &-active,
     &:hover,
     &:active {
       background-image: linear-gradient(
@@ -196,13 +202,20 @@ select {
   bottom: 0;
 }
 
-.user-info-hover:hover,.user-info-active{ 
+.user-info-hover:hover,
+.user-info-active {
   text-decoration: none;
   cursor: pointer;
-  background-image: linear-gradient(to bottom,white 0%,white 95%,$dark-purple 95%,$dark-purple 100%);
+  background-image: linear-gradient(
+    to bottom,
+    white 0%,
+    white 95%,
+    $dark-purple 95%,
+    $dark-purple 100%
+  );
 }
 
-.modal-content{
+.modal-content {
   position: absolute;
   width: 700px !important;
   margin: auto;

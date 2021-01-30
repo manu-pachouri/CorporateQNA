@@ -1,18 +1,19 @@
 <app-filters *ngIf="showFilters"></app-filters>
 <div class="d-flex bg-light p-0 m-3 border">
     <div class="col-sm-7 mr-0 p-0 bg-white">
-        <div *ngFor="let i of questions">
-            <app-qna-card></app-qna-card>
+        <div *ngFor="let q of questions">
+            <app-qna-card [question]="q"></app-qna-card>
         </div>
     </div>
-    <div class="col-sm-5 m-0 p-0">
+    <div class="col-sm-5 m-0 p-0" *ngIf="activeQuestion!=null">
         <div class="border-bottom pt-3 px-3 pb-0">
             <div>
                 <div class="d-flex align-items-center font-size-11px">
-                    <img src="../../../assets/images/user-image.png" alt="John Doe" class="img-fluid rounded-circle"
+                    <img src="{{activeQuestion.imageUrl}}" alt="John Doe" class="img-fluid rounded-circle"
                         style="width: 30px" />
                     <div class="pl-3">
-                        4hrs Ago
+                        <span class="font-size-16px">{{activeQuestion.askedBy}}</span>
+                        {{activeQuestion.askedOn}}
                     </div>
                     <div class="ml-auto cursor-ptr">
                         <fa-icon [icon]="Icons.exclamation" style="color: red;"></fa-icon>
@@ -20,23 +21,20 @@
                     </div>
                 </div>
                 <div class="">
-                    <p>
-                        Why does G Fortran produces large stack size compared to C++ in this simple problem and what are
-                        the alternatives?
+                    <p class="font-size-15px">
+                        {{activeQuestion.title}}
                     </p>
                     <p class="font-size-13px">
-                        Placeholder text to use in your graphic,print and web layouts and discover plugins for your
-                        favourite writing,design and blogging tools.Placeholder text to use in your graphic,print and
-                        web layouts and discover plugins for your favourite writing,design and blogging tools
+                        {{activeQuestion.description}}
                     </p>
                 </div>
             </div>
         </div>
         <div style="background-color: #cccbcb;" class="py-1 pl-3 font-weight-bolder">
-            ANSWERS (3)
+            ANSWERS ({{activeQuestion.answersCount}})
         </div>
         <div>
-            <app-qna-answers *ngFor="let ans of answers"></app-qna-answers>
+            <app-qna-answers *ngFor="let answer of answers" [answer]="answer"></app-qna-answers>
         </div>
         <form *ngIf="showFilters" class="NgxEditor__Wrapper font-size-13px ml-3" style="position: relative; margin-top: 50px;"
             [formGroup]="formGroup" (ngSubmit)="onSubmit()">

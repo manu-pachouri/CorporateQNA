@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bknnEdp0o2Mpz24MU+ol1KbMGn7TR2Hb6f66GGvEIoj2qYREpkwDEuvKxQchGQ7BqZfLS4DVMVH7jWPrpOYiwA==",
+  "dgSpecHash": "6MwWComSWtobKrx9GWfQiyw9yrzdNJ6kcV8DytB6q/CUEsTtKoEUPSMebqc5D46QzO6p7P6z5IY87WP8SzEwyg==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\CorporateQNA\\CorporateQNA.Models\\CorporateQNA.Models.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\petapoco\\5.1.306\\petapoco.5.1.306.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\petapoco.compiled\\6.0.459\\petapoco.compiled.6.0.459.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

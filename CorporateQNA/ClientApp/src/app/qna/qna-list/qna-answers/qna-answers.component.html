@@ -1,26 +1,28 @@
 <div class="media border-0 pl-3 pt-2">
-    <img src="../../../../assets/images/user-image.png" alt="John Doe" class="mr-3 rounded-circle" style="width:30px;">
+    <img src="{{answer.imageUrl}}" alt="John Doe" class="mr-3 rounded-circle" style="width:30px;">
     <div class="media-body">
         <div class="d-flex align-items-center">
             <div>
-                Jessy Robert
+                {{answer.answeredBy}}
             </div>
             <div class="font-size-11px px-2">
-                30 min Ago
+                {{answer.answeredOn}}
             </div>
             <div class="ml-auto px-2 font-size-13px">
-                <fa-icon [icon]="Icons.thumbsUp" class="thumbs-up thumbs-up-active"></fa-icon>
-                3
+                <fa-icon [icon]="Icons.thumbsUp" class="thumbs-up"
+                [ngClass]="{'thumbs-up-active':answer.activity == 1 || liked == 1}"
+                (click)="like()"></fa-icon>
+                {{answer.likes}}
             </div>
             <div class="px-2 font-size-13px">
-                <fa-icon [icon]="Icons.thumbsDown" class="thumbs-down"></fa-icon>
-                2
+                <fa-icon [icon]="Icons.thumbsDown" class="thumbs-down"
+                [ngClass]="{'thumbs-down-active':answer.activity == 2 || liked == -1}"
+                (click)="dislike()"></fa-icon>
+                {{answer.dislikes}}
             </div>
         </div>
         <p class="font-size-13px">
-            Placeholder text to use in your graphic,print and web layouts and discover plugins for your favourite
-            writing,design and blogging tools.Placeholder text to use in your graphic,print and web layouts and discover
-            plugins for your favourite writing,design and blogging tools
+            {{answer.description}}
         </p>
         <div class="d-flex font-size-11px">
             <div>

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { UsersDataViewModel } from './../../Models/UsersDataViewModel';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Icons } from 'src/app/shared/font-awesome-icons';
 
@@ -8,6 +9,8 @@ import { Icons } from 'src/app/shared/font-awesome-icons';
 })
 export class UserInfoComponent implements OnInit {
   @ViewChild('Questions',{static:true,read:ViewContainerRef}) public questionsPlaceholder:ViewContainerRef;
+  
+  @Input() user:UsersDataViewModel;
 
 
   Icons = new Icons();

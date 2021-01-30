@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using PetaPoco;
-using CorporateQNA.Models.DbModels;
 
 namespace CorporateQNA.Services
 {
@@ -35,12 +34,6 @@ namespace CorporateQNA.Services
 
             var UserInfo = new UserInfo(User.Id, model);
             _db.Insert(UserInfo);
-
-            var Data = new UserData { 
-                Id = User.Id
-            };
-
-            _db.Insert(Data);
 
             if (Result.Succeeded)
             {

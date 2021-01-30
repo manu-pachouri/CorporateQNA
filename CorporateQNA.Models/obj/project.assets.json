@@ -792,6 +792,19 @@
       "PetaPoco/5.1.306": {
         "type": "package"
       },
+      "PetaPoco.Compiled/6.0.459": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/PetaPoco.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PetaPoco.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1389,7 +1402,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -1404,7 +1417,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -3054,6 +3067,20 @@
         "Content/Models/PetaPoco.cs",
         "petapoco.5.1.306.nupkg.sha512",
         "petapoco.nuspec"
+      ]
+    },
+    "PetaPoco.Compiled/6.0.459": {
+      "sha512": "CzjJ036nVHFI42IDTpHz53AlNlEvugr12j/eUHVfzNV/S1hNY03grqpmt7hKy9706X8DKqVDTOybTxv295NAPw==",
+      "type": "package",
+      "path": "petapoco.compiled/6.0.459",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PetaPoco.dll",
+        "lib/net45/PetaPoco.dll",
+        "lib/netstandard2.0/PetaPoco.dll",
+        "petapoco.compiled.6.0.459.nupkg.sha512",
+        "petapoco.compiled.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6850,6 +6877,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.2",
       "PetaPoco >= 5.1.306",
+      "PetaPoco.Compiled >= 6.0.459",
       "System.Configuration.ConfigurationManager >= 5.0.0",
       "System.Data.SqlClient >= 4.8.2"
     ]
@@ -6924,6 +6952,10 @@
           "PetaPoco": {
             "target": "Package",
             "version": "[5.1.306, )"
+          },
+          "PetaPoco.Compiled": {
+            "target": "Package",
+            "version": "[6.0.459, )"
           },
           "System.Configuration.ConfigurationManager": {
             "target": "Package",

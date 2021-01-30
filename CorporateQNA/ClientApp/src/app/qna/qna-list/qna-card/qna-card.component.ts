@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Activity, QuestionActivityViewModel } from './../../../Models/QuestionActivityView';
+import { DateTimeService } from './../../../Services/date-time.service';
+import { QuestionViewModel } from './../../../Models/QuestionViewModel';
+import { HomeService } from './../../../Services/home-service.service';
+import { AfterViewChecked, Component, DoCheck, Input, OnInit } from '@angular/core';
 import { Icons } from 'src/app/shared/font-awesome-icons';
+import { UserActivityService } from 'src/app/Services/user-activity.service';
 
 @Component({
   selector: 'app-qna-card',
@@ -7,11 +12,36 @@ import { Icons } from 'src/app/shared/font-awesome-icons';
   styles: [
   ]
 })
-export class QnaCardComponent implements OnInit {
+export class QnaCardComponent implements OnInit,DoCheck {
   Icons = new Icons();
-  constructor() { }
+  @Input() question:QuestionViewModel;
+  agoTime:string;
+  isActive:boolean = false;
+  
+  constructor(private homeService:HomeService,
+              private userActivityService:UserActivityService) {
+   }
 
   ngOnInit(): void {
   }
 
+  ngDoCheck(){
+    this.isActive = this.question.id == this.homeService.activeQuestion?.id;
+  }
+
+  onClick(){
+    if(sessionStorage.getItem('userId')){
+      let activity = new QuestionActivityViewModel();
+    activity.activity = Activity.none;
+    activity.viewed = true;
+    activity.questionId = this.question.id;
+    activity.activityBy = sessionStorage.getItem('userId');
+    this.userActivityService.viewQuestion(activity).subscribe(
+      ()=>console.log('question viewed')
+    );
+    }
+    this.homeService.QuestionClick.emit(this.question);
+  }
 }
+
+

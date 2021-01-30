@@ -1,6 +1,6 @@
 import { JwtKey, OidcSecurityService } from 'angular-auth-oidc-client';
 import { Icons } from '../font-awesome-icons';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent implements OnInit,DoCheck {
   Icons = new Icons();
   CurrentDate = new Date();
   LoggedIn:boolean;
@@ -26,9 +26,14 @@ export class TopBarComponent implements OnInit {
           var details = JSON.parse(sessionStorage.getItem('js_userData'));
           this.userName = details['name'];
           this.imageUrl = details['picture'];
+          sessionStorage.setItem('userId',details['sub']);
+        }else{
+          sessionStorage.removeItem('userId');
         }
     });
   }
+
+  ngDoCheck(){}
 
   login() {
     this.oidcSecurityService.authorize();
@@ -37,6 +42,7 @@ export class TopBarComponent implements OnInit {
 
 logout() {
     this.oidcSecurityService.logoff();
+    sessionStorage.removeItem('userId');
 }
 
 }

@@ -20,6 +20,8 @@
 	  </PackageReference>
 
 	  <PackageReference Include="PetaPoco" Version="5.1.306" />
+
+	  <PackageReference Include="PetaPoco.Compiled" Version="6.0.459" />
 	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
 	  <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CategoryViewModel } from './../../Models/CategoryViewModel';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-card',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class CategoryCardComponent implements OnInit {
-
+  @Input() category:CategoryViewModel;
   constructor() { }
 
   ngOnInit(): void {

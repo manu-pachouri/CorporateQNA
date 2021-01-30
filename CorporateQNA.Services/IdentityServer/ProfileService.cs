@@ -29,7 +29,7 @@ namespace CorporateQNA.Services
         {
             var User = _userManager.GetUserAsync(context.Subject).Result;
 
-            var Info = _db.FirstOrDefault<UserInfo>("where UserId = @0",User.Id);
+            var Info = _db.FirstOrDefault<UserInfo>("where Id = @0",User.Id);
             
             var Claims = new List<Claim>()
             {

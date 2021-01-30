@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
+import { HttpClientModule } from '@angular/common/http';
 
 export function configureAuth(oidcConfigService: OidcConfigService) {
   return () =>
@@ -36,7 +37,8 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
     AppRoutingModule,
     FontAwesomeModule,
     ModalModule.forRoot(),
-    AuthModule.forRoot()
+    AuthModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     OidcConfigService,

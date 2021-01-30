@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+using AutoMapper;
 using CorporateQNA.Models;
 using CorporateQNA.Services;
+using CorporateQNA.Services.Interfaces;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace IdentityServer
 {
@@ -30,7 +33,21 @@ namespace IdentityServer
                 options.UseSqlServer(ConnectionString,opt=>opt.MigrationsAssembly("CorporateQNA"));
             });
 
-            services.AddTransient<AuthService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", config =>
+                {
+                    config.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
+            services.AddScoped<AuthService>();
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IQuestionService, QuestionService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IAnswerService,AnswerService>();
 
             services.AddIdentity<IdentityUser, IdentityRole>(opt =>
             {
@@ -55,11 +72,14 @@ namespace IdentityServer
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
-            services.ConfigureApplicationCookie(config => {
+            services.ConfigureApplicationCookie(config =>
+            {
                 config.Cookie.Name = "Identity.Cookie";
                 config.LoginPath = "/login";
                 config.LogoutPath = "/logout";
             });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddMvc();
         }
@@ -75,6 +95,8 @@ namespace IdentityServer
 
             // uncomment if you want to add MVC
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
 
             app.UseIdentityServer();
 

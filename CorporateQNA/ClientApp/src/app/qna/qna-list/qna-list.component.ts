@@ -1,3 +1,9 @@
+import { AnswerViewModel } from './../../Models/AnswerModel';
+import { AnswerAddViewModel } from '../../Models/AnswerModel';
+import { DateTimeService } from './../../Services/date-time.service';
+import { QuestionViewModel } from './../../Models/QuestionViewModel';
+import { UserApiService } from './../../Services/user-api-service.service';
+import { HomeService } from './../../Services/home-service.service';
 import { Component, DoCheck, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,10 +18,11 @@ import { Icons } from 'src/app/shared/font-awesome-icons';
   ]
 })
 export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
-  questions = [1,2,3,4,5];
-  answers = [1,2];
+  questions:QuestionViewModel[] = [];
+  answers:AnswerViewModel[]=[];
   showFilters:boolean = true;
   formGroup:FormGroup;
+  activeQuestion:QuestionViewModel;
   
   //ngx editor 
   editor:Editor = new Editor({
@@ -48,13 +55,44 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   };
 
   constructor(private modalService:BsModalService,
-              private router:Router) { 
+              private router:Router,
+              private dateTimeService:DateTimeService,
+              private homeService:HomeService,
+              private apiService:UserApiService) { 
   }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       editorContent: new FormControl(null,Validators.required)
     });
+    this.homeService.RefreshList.subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+      }
+    );
+
+    this.getQuestions();
+    this.homeService.RefreshList.subscribe(
+      ()=>{this.getQuestions();}
+    )
+
+    this.homeService.QuestionClick
+    .subscribe(
+      response=>{
+        console.log(response);
+        this.activeQuestion = response;
+        this.apiService.getAnswers(this.activeQuestion.id).subscribe(
+          response=>{
+            console.log(response);
+            for(let key in response){
+              response[key].answeredOn = this.dateTimeService.dateDiff(new Date(response[key].answeredOn),new Date());
+            }
+            this.answers = response;
+          })
+      }
+    )
   }
 
   ngDoCheck(){
@@ -67,7 +105,21 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
 
   onSubmit()
   {
-    console.log(this.formGroup.value['editorContent']['content'][0]['content'][0]['text']);
+    if(this.formGroup.valid && sessionStorage.getItem('userId')){
+      let answer = new AnswerAddViewModel();
+      answer.answerOf = this.activeQuestion.id;
+      answer.answeredBy = sessionStorage.getItem('userId');
+      answer.answeredOn = new Date();
+      answer.description = this.formGroup.value['editorContent']['content'][0]['content'][0]['text'];
+
+      this.apiService.postAnswer(answer).subscribe(
+        ()=>{
+          this.formGroup.reset();
+          this.editor.setContent('Enter your text here...');
+          window.alert('answer posted');
+        }
+      )
+    }else window.alert("Please Login..");
   }
 
   openModal(template:TemplateRef<any>){
@@ -77,6 +129,18 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
 
   closeModal(){
     this.modalRef.hide();
+  }
+
+  getQuestions(){
+    this.apiService.getQuestions()
+    .subscribe(
+      response=>{
+        for(let key in response){
+          response[key].askedOn = this.dateTimeService.dateDiff(new Date(response[key].askedOn),new Date());
+        }
+        this.questions = response;
+    }
+    );
   }
   
 }

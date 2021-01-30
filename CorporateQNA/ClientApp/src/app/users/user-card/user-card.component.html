@@ -1,29 +1,29 @@
 <div class="bg-white border m-3 cursor-ptr" (click)="onclick()">
     <div class="d-flex p-3">
         <div>
-            <img src="../../../assets/images/user-image.png" class="img-fluid rounded-circle mr-3" width="40px">
+            <img src="{{user.imageUrl}}" class="img-fluid rounded-circle mr-3" width="40px">
         </div>
         <div>
-            <h6>John Doe</h6>
-            <p class="font-size-12px text-muted mb-1">Senior Manager-Dev</p>
-            <p class="font-size-12px text-muted">Product Development, Hyderabad</p>
+            <h6>{{user.fullName}}</h6>
+            <p class="font-size-12px text-muted mb-1">{{user.designation}}-{{user.team}}</p>
+            <p class="font-size-12px text-muted">{{user.role}}, {{user.location}}</p>
             <div class="d-flex align-items-center font-size-14px">
-                <span class="mr-2"><fa-icon [icon]="Icons.thumbsUp" class="ml-1 mr-2 thumbs-up thumbs-up-active"></fa-icon>32</span>
-                <span class="ml-2"><fa-icon [icon]="Icons.thumbsDown" class="mr-2 thumbs-down thumbs-down-active"></fa-icon>22</span>
+                <span class="mr-2"><fa-icon [icon]="Icons.thumbsUp" class="ml-1 mr-2 thumbs-up thumbs-up-active"></fa-icon>{{user.likes}}</span>
+                <span class="ml-2"><fa-icon [icon]="Icons.thumbsDown" class="mr-2 thumbs-down thumbs-down-active"></fa-icon>{{user.dislikes}}</span>
             </div>
         </div>
     </div>
     <div class="d-flex border-top">
         <div class="d-flex flex-column align-items-center border-right p-3">
-            <div>26</div>
+            <div>{{user.questionsAsked}}</div>
             <div class="font-size-11px text-muted">Questions Asked</div>
         </div>
         <div class="d-flex flex-column align-items-center border-right p-3">
-            <div>84</div>
+            <div>{{user.questionsAnswered}}</div>
             <div class="font-size-11px text-muted">Questions Answered</div>
         </div>
         <div class="d-flex flex-column align-items-center p-3">
-            <div>31</div>
+            <div>{{user.questionsSolved}}</div>
             <div class="font-size-11px text-muted">Questions Solved</div>
         </div>
     </div>

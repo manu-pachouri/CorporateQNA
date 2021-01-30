@@ -1,3 +1,5 @@
+import { UsersDataViewModel } from './../../Models/UsersDataViewModel';
+import { UserApiService } from './../../Services/user-api-service.service';
 import { Icons } from 'src/app/shared/font-awesome-icons';
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,12 +12,17 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit,DoCheck {
   Icons = new Icons();
-  Users = [1,2,3,4,5,6,7,8];
+  Users:UsersDataViewModel[] = [];
   showUsersList: boolean;
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private userApiService:UserApiService) { }
 
   ngOnInit(): void {
-    
+    this.userApiService.getUsers().subscribe(
+      response=>{
+        this.Users = response;
+      }
+    )
   }
 
   ngDoCheck(){

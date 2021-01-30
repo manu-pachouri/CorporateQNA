@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CorporateQNA.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210128150359_UsersData")]
-    partial class UsersData
+    [Migration("20210129084313_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,34 +21,129 @@ namespace CorporateQNA.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("CorporateQNA.Models.DbModels.UserData", b =>
+            modelBuilder.Entity("CorporateQNA.Models.DbModels.Answer", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.Property<int>("Dislikes")
+                    b.Property<int>("AnswerOf")
                         .HasColumnType("int");
 
-                    b.Property<int>("Likes")
+                    b.Property<string>("AnsweredBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("AnsweredOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("CorporateQNA.Models.DbModels.AnswerActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Activity")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuestionsAnswered")
-                        .HasColumnType("int");
+                    b.Property<string>("ActivityBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("QuestionsAsked")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionsSolved")
+                    b.Property<int>("AnswerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsersData");
+                    b.ToTable("AnswerActivities");
+                });
+
+            modelBuilder.Entity("CorporateQNA.Models.DbModels.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AddedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("AddedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("CorporateQNA.Models.DbModels.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AskedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("AskedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("CorporateQNA.Models.DbModels.QuestionActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Activity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ActivityBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Viewed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionActivities");
                 });
 
             modelBuilder.Entity("CorporateQNA.Models.UserInfo", b =>
                 {
-                    b.Property<string>("UserId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Designation")
@@ -69,7 +164,7 @@ namespace CorporateQNA.Migrations
                     b.Property<string>("Team")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("UsersInfo");
                 });

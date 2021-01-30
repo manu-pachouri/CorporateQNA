@@ -41,20 +41,20 @@
         <span aria-hidden="true" class="text-white" (click)="closeModal()">&times;</span>
       </button>
     </div>
-    <form>
+    <form [formGroup]="formGroup">
       <div class="modal-body row font-size-13px">
         <div class="form-group col-sm-9">
           <label>Category Name</label>
-          <input type="text" class="form-control" placeholder="Enter Category Name" style="font-size: 13px;">
+          <input type="text" class="form-control" placeholder="Enter Category Name" style="font-size: 13px;" formControlName="name">
         </div>
         <div class="form-group col-sm-9">
           <label>Description</label>
-          <textarea class="form-control" rows="3" placeholder="Enter your text here..">
+          <textarea class="form-control" rows="3" placeholder="Enter your text here.." formControlName="description">
           </textarea>
         </div>
         <div class="ml-auto mt-4 mr-3 mb-3">
           <button type="button" class="button px-3" (click)="closeModal()" style="width: 80px;">Cancel</button>
-          <button class="button px-3 ml-2" style="width: 80px;">Save</button>
+          <button type="button" class="button px-3 ml-2" style="width: 80px;" (click)="onSubmit()">Save</button>
         </div>
       </div>
     </form>

@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.2",
           "PetaPoco": "5.1.306",
+          "PetaPoco.Compiled": "6.0.459",
           "System.Configuration.ConfigurationManager": "5.0.0",
           "System.Data.SqlClient": "4.8.2"
         },
@@ -716,6 +717,18 @@
         }
       },
       "PetaPoco/5.1.306": {},
+      "PetaPoco.Compiled/6.0.459": {
+        "dependencies": {
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PetaPoco.dll": {
+            "assemblyVersion": "6.0.459.0",
+            "fileVersion": "6.0.459.0"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -1865,6 +1878,13 @@
       "sha512": "sha512-B8CaBJtriKE42WYx8M/2wGPgnTMY6DrbzzsC5NenBZgTwveKymYYf6kqC1Sm/4dwhhy9ijMpu20Bqmz2jOY1Gw==",
       "path": "petapoco/5.1.306",
       "hashPath": "petapoco.5.1.306.nupkg.sha512"
+    },
+    "PetaPoco.Compiled/6.0.459": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CzjJ036nVHFI42IDTpHz53AlNlEvugr12j/eUHVfzNV/S1hNY03grqpmt7hKy9706X8DKqVDTOybTxv295NAPw==",
+      "path": "petapoco.compiled/6.0.459",
+      "hashPath": "petapoco.compiled.6.0.459.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
