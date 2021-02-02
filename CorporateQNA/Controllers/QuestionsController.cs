@@ -21,10 +21,10 @@ namespace CorporateQNA.Controllers
 
         public IQuestionService _questionService { get; }
 
-        [Route("")]
-        public List<QuestionViewModel> GetAllQuestions()
+        [Route("{userId}")]
+        public List<QuestionViewModel> GetAllQuestions(string userId)
         {
-            return _questionService.GetQuestions();
+            return _questionService.GetQuestions(userId);
         }
 
         [Route("post")]
@@ -37,6 +37,12 @@ namespace CorporateQNA.Controllers
         public void PostViewActivity(QuestionActivity questionActivity)
         {
             _questionService.AddViewActivity(questionActivity);
+        }
+
+        [Route("upvote")]
+        public void PostUpvote(QuestionActivity activity)
+        {
+            _questionService.Upvote(activity);
         }
     }
 }

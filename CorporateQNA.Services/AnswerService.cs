@@ -32,14 +32,7 @@ namespace CorporateQNA.Services
 
         public List<AnswerViewModel> GetAnswers(int qid,string userId)
         {
-            var sql = Sql.Builder.Append(@"select a.*,case when aa.Activity 
-                is null then 0 else aa.Activity
-                end as Activity
-                from AllAnswersView a 
-                join Questions q on q.Id = a.AnswerOf 
-                left join (select * from AnswerActivities aa
-                where aa.ActivityBy = @0) as aa on aa.AnswerId = a.Id
-                where q.Id = @1;", userId,qid);
+            var sql = Sql.Builder.Append(";EXEC GetAnswers @0,@1", userId,qid);
 
             var Result = _db.Fetch<AnswerViewModel>(sql);
             return Result;
@@ -62,6 +55,19 @@ namespace CorporateQNA.Services
                     _db.Save(Act);
                 }
             }
+        }
+
+        public void MarkAsBest(Answer answer)
+        {
+            var CurrAns = _db.FirstOrDefault<Answer>("where AnswerOf=@0 and MarkedAsBest=1", answer.AnswerOf);
+            if (CurrAns!=null)
+            {
+                CurrAns.MarkedAsBest = false;
+                _db.Save(CurrAns);
+            }
+            var newAns = _db.SingleOrDefault<Answer>("where Id=@0",answer.Id);
+            newAns.MarkedAsBest = answer.MarkedAsBest;
+            _db.Save(newAns);
         }
     }
 }

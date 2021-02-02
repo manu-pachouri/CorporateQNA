@@ -13,5 +13,6 @@ namespace CorporateQNA.Services.Interfaces
         public void AddAnswer(AnswerAddViewModel answer);
         public List<AnswerViewModel> GetAnswers(int qid,string userId);
         public void PostActivity(AnswerActivity answerActivity);
+        public void MarkAsBest(Answer answer);
     }
 }

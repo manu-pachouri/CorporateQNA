@@ -10,11 +10,13 @@ namespace CorporateQNA.Models.ViewModels
     {
         public int Id { get; set; }
         public string  Description { get; set; }
+        public int AnswerOf { get; set; }
         public string AnsweredBy { get; set; }
         public DateTime AnsweredOn { get; set; }
         public string ImageUrl { get; set; }
         public int Likes { get; set; }
         public int Dislikes { get; set; }
         public Activity Activity { get; set; }
+        public bool MarkedAsBest { get; set; }
     }
 }

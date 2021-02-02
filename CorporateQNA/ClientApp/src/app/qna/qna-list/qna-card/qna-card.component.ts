@@ -42,6 +42,30 @@ export class QnaCardComponent implements OnInit,DoCheck {
     }
     this.homeService.QuestionClick.emit(this.question);
   }
+
+  upVote(){
+    if(this.question.upVoted){
+      this.question.upVoted=false;
+      this.question.upVotes-=1;
+      this.upvoteRequest(Activity.none);
+    }else{
+      this.question.upVoted=true;
+      this.question.upVotes+=1;
+      this.upvoteRequest(Activity.upVote);
+    }
+  }
+
+  upvoteRequest(act:Activity){
+    if(sessionStorage.getItem('userId')){
+      let activity = new QuestionActivityViewModel();
+      activity.activity=act;
+      activity.activityBy=sessionStorage.getItem('userId');
+      activity.questionId=this.question.id;
+
+      this.userActivityService.upVoteQuestion(activity)
+      .subscribe();
+    }
+  }
 }
 
 

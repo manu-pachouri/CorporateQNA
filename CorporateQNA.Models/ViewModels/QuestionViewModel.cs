@@ -10,6 +10,7 @@ namespace CorporateQNA.Models.ViewModels
     {
         public int Id { get; set; }
         public string AskedBy { get; set; }
+        public string AskedById { get; set; }
         public string ImageUrl { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -17,5 +18,9 @@ namespace CorporateQNA.Models.ViewModels
         public int UpVotes { get; set; }
         public int AnswersCount { get; set; }
         public DateTime AskedOn { get; set; }
+        public int CategoryId { get; set; }
+        public bool Resolved { get; set; }
+        public bool UpVoted { get; set; }
+        public bool Participated { get; set; }
     }
 }

@@ -10,8 +10,9 @@ namespace CorporateQNA.Services.Interfaces
 {
     public interface IQuestionService
     {
-        public List<QuestionViewModel> GetQuestions();
+        public List<QuestionViewModel> GetQuestions(string userId);
         public void AddQuestion(QuestionAddViewModel question);
         public void AddViewActivity(QuestionActivity questionActivity);
+        public void Upvote(QuestionActivity activity);
     }
 }

@@ -1,3 +1,5 @@
+import { debounceTime } from 'rxjs/operators';
+import { UserPageService } from 'src/app/Services/user-page.service';
 import { UserApiService } from './../../Services/user-api-service.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { CategoryAddViewModel } from './../../Models/CategoryAddViewModel';
@@ -15,18 +17,33 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CategoryNavigationComponent implements OnInit {
   Icons = new Icons();
+  searchFormGroup:FormGroup;
+
   formGroup:FormGroup;
 
   modalRef:BsModalRef;
   constructor(private BmsModalService:BsModalService,
               private oidc:OidcSecurityService,
-              private apiService:UserApiService) { }
+              private apiService:UserApiService,
+              private catService:UserPageService) { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       name : new FormControl(null,Validators.required),
       description:new FormControl(null,Validators.required)
     });
+
+    this.searchFormGroup = new FormGroup({
+      search:new FormControl(null),
+      show:new FormControl(0)
+    });
+
+    this.searchFormGroup.valueChanges
+    .pipe(debounceTime(1000))
+    .subscribe(
+      value=>{
+        this.catService.event.emit(value['search']);
+      })
   }
 
   openModal(template:TemplateRef<any>){
@@ -35,6 +52,11 @@ export class CategoryNavigationComponent implements OnInit {
 
   closeModal(){
     this.modalRef.hide();
+  }
+
+  reset(){
+    this.searchFormGroup.reset();
+    this.searchFormGroup.get('show').setValue(0);
   }
 
   onSubmit(){

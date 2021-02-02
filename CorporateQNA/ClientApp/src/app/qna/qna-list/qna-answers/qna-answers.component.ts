@@ -1,4 +1,6 @@
-import { AnswerViewModel, AnswerActivityModel } from './../../../Models/AnswerModel';
+import { HomeService } from './../../../Services/home-service.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AnswerViewModel, AnswerActivityModel, ansState } from './../../../Models/AnswerModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { Icons } from 'src/app/shared/font-awesome-icons';
 import { Activity } from 'src/app/Models/QuestionActivityView';
@@ -14,26 +16,55 @@ export class QnaAnswersComponent implements OnInit {
   Icons = new Icons();
   @Input() answer:AnswerViewModel=null;
   liked:number;
+  formGroup:FormGroup;
 
-  constructor(private activityService:UserActivityService) { }
+  constructor(private activityService:UserActivityService,
+              private homeService:HomeService) { }
 
   ngOnInit(): void {
+    this.formGroup = new FormGroup({
+      checkbox:new FormControl(this.answer.markedAsBest)
+    });
+
+    this.formGroup.get('checkbox').valueChanges
+    .subscribe(
+      state=>{
+        this.answer.markedAsBest = state;
+        this.homeService.markEvent.emit(this.answer);
+      }
+    );
   }
 
   like(){
-    if(this.answer.activity == Activity.like)
-      {
-        this.activity(Activity.none);}
-    else {
-      this.activity(Activity.like);
+    if(sessionStorage.getItem('userId')){
+      if(this.answer.activity == Activity.like){
+        this.answer.activity = Activity.none;
+        this.answer.likes-=1;
+        this.activity(Activity.none);
+      }else{
+        if(this.answer.activity == Activity.dislike)
+          this.answer.dislikes-=1;
+        this.answer.activity = Activity.like;
+        this.answer.likes+=1;
+        this.activity(Activity.like);
+      }
     }
   }
 
   dislike(){
-    if(this.answer.activity == Activity.dislike)
-      this.activity(Activity.none)
-    else 
-      this.activity(Activity.dislike);
+    if(sessionStorage.getItem('userId')){
+      if(this.answer.activity == Activity.dislike){
+        this.answer.activity = Activity.none;
+        this.answer.dislikes-=1;
+        this.activity(Activity.none);
+      }else{
+        if(this.answer.activity == Activity.like)
+          this.answer.likes-=1;
+        this.answer.activity = Activity.dislike;
+        this.answer.dislikes+=1;
+        this.activity(Activity.dislike);
+      }
+    }
   }
 
   activity(activity:Activity){
@@ -45,16 +76,7 @@ export class QnaAnswersComponent implements OnInit {
 
       this.activityService.AnswerActivity(ansAct).subscribe(
         ()=>{
-          if(ansAct.activity == Activity.like)
-            {
-              this.liked = 1;}
-          else if(ansAct.activity = Activity.dislike)
-            { 
-              this.liked = -1;
-            }
-          else 
-              this.liked = 0;
-          console.log('liked');
+          console.log(activity.toString());
         }
       );
     }

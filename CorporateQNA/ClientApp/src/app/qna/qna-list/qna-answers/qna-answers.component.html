@@ -10,13 +10,13 @@
             </div>
             <div class="ml-auto px-2 font-size-13px">
                 <fa-icon [icon]="Icons.thumbsUp" class="thumbs-up"
-                [ngClass]="{'thumbs-up-active':answer.activity == 1 || liked == 1}"
+                [ngClass]="{'thumbs-up-active':answer.activity == 1}"
                 (click)="like()"></fa-icon>
                 {{answer.likes}}
             </div>
             <div class="px-2 font-size-13px">
                 <fa-icon [icon]="Icons.thumbsDown" class="thumbs-down"
-                [ngClass]="{'thumbs-down-active':answer.activity == 2 || liked == -1}"
+                [ngClass]="{'thumbs-down-active':answer.activity == 2}"
                 (click)="dislike()"></fa-icon>
                 {{answer.dislikes}}
             </div>
@@ -25,12 +25,12 @@
             {{answer.description}}
         </p>
         <div class="d-flex font-size-11px">
-            <div>
+            <form [formGroup]="formGroup">
                 <label class="check-container m-0 pl-1 d-block mx-auto">
-                    <input type="checkbox" class="d-none">
+                    <input type="checkbox" class="d-none" formControlName="checkbox">
                     <span class="checkmark"></span>
                 </label>
-            </div>
+            </form>
             <div class="font-weight-bolder pl-2">
                 Mark as Best Solution
             </div>

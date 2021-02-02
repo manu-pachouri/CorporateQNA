@@ -1,5 +1,10 @@
 import { Activity } from './QuestionActivityView';
 
+export enum ansState{
+  unmarked = 0,
+  marked = 1
+}
+
 export class AnswerAddViewModel {
   answerOf: number;
   description: string;
@@ -12,10 +17,12 @@ export class AnswerViewModel {
   description: string;
   answeredBy: string;
   answeredOn: string;
+  answerOf:number;
   imageUrl: string;
   likes: number;
   dislikes: number;
   activity:Activity;
+  markedAsBest:boolean;
 }
 
 export class AnswerActivityModel{

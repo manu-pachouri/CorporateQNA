@@ -1,3 +1,5 @@
+import { questionFilters } from './../../Models/QuestionActivityView';
+import { enumShowFilters, enumSortFilters, showFilters, sortFilters } from './../../Models/QuestionFilters';
 import { HomeService } from './../../Services/home-service.service';
 import { QuestionAddViewModel } from './../../Models/QuestionAddViewModel';
 import { UserApiService } from './../../Services/user-api-service.service';
@@ -8,6 +10,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Editor, Toolbar } from 'ngx-editor';
 import { Icons } from '../../shared/font-awesome-icons';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 @Component({
   selector: 'app-filters',
@@ -19,6 +23,9 @@ export class FiltersComponent implements OnInit {
   Icons = new Icons();
   modalRef:BsModalRef;
   categories:CategoryViewModel[] = [];
+  showFilters = (new showFilters()).array;
+  sortFilters = (new sortFilters()).array;
+  searchSubscription:Subscription;
 
   //ngxeditor
   editor:Editor;
@@ -33,26 +40,32 @@ export class FiltersComponent implements OnInit {
   html='';
   ////
   questionFormGroup:FormGroup;
+  filtersGroup:FormGroup;
 
   constructor(private modalService:BsModalService,
     private apiService:UserApiService,
     private homeService:HomeService) { }
 
   ngOnInit(): void {
+    this.apiService.getCategories().subscribe(
+      response=>this.categories = response
+    );
+
     this.questionFormGroup = new FormGroup({
       question:new FormControl(null,Validators.required),
       editorContent:new FormControl(null,Validators.required),
-      category:new FormControl(null,Validators.required)
+      category:new FormControl(0,Validators.required)
     });
 
-    this.apiService.getCategories().subscribe(
-      response=>this.categories = response
-    )
+    this.initializeFilters(); 
+
+    this.RegisterfilterChangesEvent();
+
   }
 
   openModal(template:TemplateRef<any>){
     this.editor = new Editor({
-      content:`Enter your text here..`,
+      content:`Enter your text here...`,
       enabled:true,
       history:true,
       keyboardShortcuts:true
@@ -65,9 +78,16 @@ export class FiltersComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  reset(){
+    this.filtersGroup.reset();
+    this.filtersGroup.get('category').setValue(0);
+    this.filtersGroup.get('show').setValue('All');
+    this.filtersGroup.get('sort').setValue('All');
+  }
+
   onSubmit(){
     if(this.questionFormGroup.valid && sessionStorage.getItem('userId')){
-      console.log(this.questionFormGroup.value);
+      console.log(this.questionFormGroup.value['editorContent']['content'][0]['content'][0]['text']);
       let question = new QuestionAddViewModel();
       question.askedBy = sessionStorage.getItem('userId');
       question.description = this.questionFormGroup.value['editorContent']['content'][0]['content'][0]['text'];
@@ -89,4 +109,21 @@ export class FiltersComponent implements OnInit {
     }else window.alert('please login...');
   }
 
+  initializeFilters(){
+    this.filtersGroup = new FormGroup({
+      search:new FormControl(null),
+      category:new FormControl(0),
+      show:new FormControl("All"),
+      sort:new FormControl('All')
+    });
+  }
+
+  RegisterfilterChangesEvent(){
+    this.filtersGroup.valueChanges
+    .pipe(
+      debounceTime(1000)
+    ).subscribe(
+      (value:questionFilters)=>this.homeService.FilterEvent.emit(value)
+    );
+  }
 }

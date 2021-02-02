@@ -2,10 +2,14 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\e2e\src\app.po.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\e2e\src\app.e2e-spec.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\e2e\src\app.e2e-spec.js.map
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\QuestionFilters.js
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\QuestionFilters.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\QuestionActivityView.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\QuestionActivityView.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\AnswerModel.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\AnswerModel.js.map
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-activity.service.js
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-activity.service.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\date-time.service.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\date-time.service.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Models\QuestionViewModel.js
@@ -26,8 +30,6 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\shared\font-awesome-icons.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\qna\qna-list\qna-list.component.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\qna\qna-list\qna-list.component.js.map
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-activity.service.js
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-activity.service.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\qna\qna-list\qna-card\qna-card.component.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\qna\qna-list\qna-card\qna-card.component.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\qna\qna-routing.module.js
@@ -44,6 +46,8 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\categories-routing.module.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\category-card\category-card.component.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\category-card\category-card.component.js.map
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-page.service.js
+C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\Services\user-page.service.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\category-navigation\category-navigation.component.js
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\category-navigation\category-navigation.component.js.map
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\ClientApp\dist\out-tsc\src\app\categories\categories.module.js

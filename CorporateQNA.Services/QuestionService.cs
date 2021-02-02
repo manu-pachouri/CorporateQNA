@@ -29,27 +29,47 @@ namespace CorporateQNA.Services
             _db.Insert(Question);
         }
 
-        public List<QuestionViewModel> GetQuestions()
+        public List<QuestionViewModel> GetQuestions(string userId)
         {
-            var Result = _db.Fetch<QuestionViewModel>("select * from QuestionCardView");
+            var Result=new List<QuestionViewModel>();
+            if (userId == null)
+                userId = "0";    
+            Result = _db.Fetch<QuestionViewModel>(";Exec GetQuestions @0", userId);
+            
             return Result;
         }
 
         public void AddViewActivity(QuestionActivity questionActivity)
         {
-            var Exists = _db.Exists<QuestionActivity>
+            var Act = _db.SingleOrDefault<QuestionActivity>
                 ("where QuestionId=@0 and ActivityBy=@1",
                 questionActivity.QuestionId, questionActivity.ActivityBy);
 
-            if (!Exists)
+            if (Act == null)
             {
                 _db.Insert(questionActivity);
             }
+            else
+            {
+                Act.Viewed = questionActivity.Viewed;
+                _db.Save(Act);
+            }
         }
 
-        public void UpVote(QuestionActivity activity)
+       
+        public void Upvote(QuestionActivity activity)
         {
-            
+            var Act = _db.SingleOrDefault<QuestionActivity>("where ActivityBy=@0 and QuestionId=@1",
+                                                                activity.ActivityBy,activity.QuestionId);
+            if (Act != null)
+            {
+                Act.Activity = activity.Activity;
+                _db.Save(Act);
+            }
+            else
+            {
+                _db.Insert(activity);
+            }
         }
     }
 }

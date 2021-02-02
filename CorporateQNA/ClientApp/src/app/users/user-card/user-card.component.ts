@@ -1,3 +1,4 @@
+import { UserPageService } from './../../Services/user-page.service';
 import { UsersDataViewModel } from './../../Models/UsersDataViewModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,14 +14,15 @@ export class UserCardComponent implements OnInit {
   @Input() user : UsersDataViewModel;
 
   Icons = new Icons();
-  constructor(private router:Router,private activeRoute:ActivatedRoute) { }
+  constructor(private router:Router,private activeRoute:ActivatedRoute,
+      private userPageService:UserPageService) { }
 
   ngOnInit(): void {
   }
 
   onclick()
   {
-    this.router.navigate(['user',this.user.id],{relativeTo:this.activeRoute});
+    this.router.navigate(['users','user',this.user.id+'+allquestions']);
   }
 
 }

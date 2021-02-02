@@ -1,3 +1,5 @@
+import { debounceTime } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 import { UsersDataViewModel } from './../../Models/UsersDataViewModel';
 import { UserApiService } from './../../Services/user-api-service.service';
 import { Icons } from 'src/app/shared/font-awesome-icons';
@@ -12,7 +14,11 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit,DoCheck {
   Icons = new Icons();
-  Users:UsersDataViewModel[] = [];
+  allUsers:UsersDataViewModel[]=[];
+  users:UsersDataViewModel[] = [];
+
+  formGroup:FormGroup;
+
   showUsersList: boolean;
   constructor(private router:Router,
               private userApiService:UserApiService) { }
@@ -20,9 +26,28 @@ export class UserListComponent implements OnInit,DoCheck {
   ngOnInit(): void {
     this.userApiService.getUsers().subscribe(
       response=>{
-        this.Users = response;
+        this.allUsers = response;
+        this.users = response;
       }
-    )
+    );
+
+    this.formGroup = new FormGroup({
+      search:new FormControl(null)
+    });
+
+    this.formGroup.get('search').valueChanges
+    .pipe(debounceTime(1000))
+    .subscribe(
+      value=>this.searchByName(value)
+    );
+  }
+  searchByName(name:string){
+    name = name?name.toLowerCase():'';
+    this.users = this.allUsers;
+    this.users = this.users.filter(user=>{
+      let fullName = user.fullName.toLowerCase();
+      return fullName.indexOf(name)>-1;
+    })
   }
 
   ngDoCheck(){

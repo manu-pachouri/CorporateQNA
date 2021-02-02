@@ -24,13 +24,13 @@ namespace CorporateQNA.Services
 
         public List<UserDataViewModel> GetUsers()
         {
-            var Result = _db.Fetch<UserDataViewModel>("Select * from UsersInfo");
+            var Result = _db.Fetch<UserDataViewModel>("Select * from UserCardView");
             return Result;
         }
 
         public UserDataViewModel GetUser(string id)
         {
-            var Result = _db.SingleOrDefault<UserDataViewModel>("Select * from UsersInfo where Id = @0",id);
+            var Result = _db.SingleOrDefault<UserDataViewModel>("Select * from UserCardView where Id = @0",id);
 
             return Result;
         }

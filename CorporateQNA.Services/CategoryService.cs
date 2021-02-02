@@ -25,7 +25,7 @@ namespace CorporateQNA.Services
 
         public List<CategoryViewModel> GetCategories()
         {
-            return _db.Fetch<CategoryViewModel>("Select * from Categories");
+            return _db.Fetch<CategoryViewModel>("Select * from CategoryViewModel");
         }
 
         public void AddCategory(CategoryAddViewModel category)

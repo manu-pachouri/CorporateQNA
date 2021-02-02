@@ -8,4 +8,9 @@ export class QuestionViewModel {
   answersCount: number;
   askedOn: string;
   askedBy:string;
+  askedById:string;
+  categoryId:number;
+  upVoted:boolean;
+  resolved:boolean;
+  participated:boolean;
 }

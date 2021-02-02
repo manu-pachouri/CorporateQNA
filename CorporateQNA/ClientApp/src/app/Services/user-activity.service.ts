@@ -1,4 +1,4 @@
-import { AnswerActivityModel } from './../Models/AnswerModel';
+import { AnswerActivityModel, AnswerViewModel } from './../Models/AnswerModel';
 import { QuestionActivityViewModel } from './../Models/QuestionActivityView';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -16,5 +16,13 @@ export class UserActivityService {
 
   AnswerActivity(activity:AnswerActivityModel){
     return this.http.post(this.baseUrl+`/answers/activity`,activity);
+  }
+
+  upVoteQuestion(activity:QuestionActivityViewModel){
+    return this.http.post(this.baseUrl+'/questions/upvote',activity);
+  }
+
+  markAsBest(answer:AnswerViewModel){
+    return this.http.post(this.baseUrl+'/answers/markasbest',answer);
   }
 }

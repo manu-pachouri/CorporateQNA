@@ -21,5 +21,7 @@ namespace CorporateQNA.Models.DbModels
         public DateTime AnsweredOn { get; set; }
         [Column]
         public string AnsweredBy { get; set; }
+        [Column]
+        public bool MarkedAsBest { get; set; }
     }
 }

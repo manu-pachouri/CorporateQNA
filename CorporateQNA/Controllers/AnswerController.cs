@@ -37,5 +37,11 @@ namespace CorporateQNA.Controllers
         {
             _answerService.PostActivity(answerActivity);
         }
+
+        [Route("markasbest")]
+        public void MarkAsBest(Answer answer)
+        {
+            _answerService.MarkAsBest(answer);
+        }
     }
 }

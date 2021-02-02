@@ -1,48 +1,43 @@
 <ul class="p-0 pt-1 m-0 border-bottom font-size-13px bg-light">
-    <form class="m-0" method="dialog">
+    <form class="m-0" method="dialog" [formGroup]="filtersGroup">
         <div class="form d-flex">
           <div class="col-sm-3 form-group">
             <label style="position: relative; width: 280px;">
                 <label>Keywords</label>
-              <input type="text" class="form-control pl-4" placeholder="Search">
+              <input type="text" class="form-control pl-4" placeholder="Search"
+              formControlName="search">
               <fa-icon [icon]="Icons.search" style="position: absolute; bottom: 7px; left: 8px;"></fa-icon>
             </label>
           </div>
           <div class="col-sm-2 form-group">
             <label>Category</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="category">
                 <option value="0" selected>All</option>
                 <option *ngFor="let c of categories" [value]="c.id">{{c.title}}</option>
             </select>
           </div>
           <div class="col-sm-2">
             <label>Show</label>
-            <select class="form-control">
-                <option>All</option>
-                <option>My Questions</option>
-                <option>My Participation</option>
-                <option>Hot</option>
-                <option>Solved</option>
-                <option>UnSolved</option>
+            <select class="form-control" formControlName="show">
+              <option value="All" selected>All</option>
+                <option *ngFor="let opt of showFilters" value="{{opt.name}}">{{opt.name}}</option>
             </select>
           </div>
           <div class="col-sm-2">
             <label>Sort by</label>
-            <select class="form-control">
-                <option>All</option>
-                <option>Recent</option>
-                <option>Last 10 Days</option>
-                <option>Last 30 Days</option>
+            <select class="form-control" formControlName="sort">
+              <option value="All" selected>All</option>
+                <option *ngFor="let s of sortFilters" value="{{s.name}}">{{s.name}}</option>
             </select>
           </div>
           <div class="d-flex align-items-center pl-4 cursor-ptr">
-            <span class="">
+            <span class="" (click)="reset()">
                 <fa-icon [icon]="Icons.reload" class="pr-1"></fa-icon>    
             </span>
             Reset
           </div>
           <div class="ml-auto d-flex align-items-center p-0">
-              <button class="button ml-auto mr-3" (click)="openModal(modal)">
+              <button type="button" class="button ml-auto mr-3" (click)="openModal(modal)">
                   <fa-icon [icon]="Icons.plus" size="sm"></fa-icon>
                   Question
               </button>
@@ -79,7 +74,7 @@
         <div class="form-group col-sm-5">
           <label for="">Category</label>
           <select class="form-control" formControlName="category">
-            <option disabled>Select Category</option>
+            <option disabled value="0">Select Category</option>
             <option *ngFor="let category of categories;let i=index;" [selected]="i==0" [value]="category.id">{{category.title}}</option>
           </select>
         </div>

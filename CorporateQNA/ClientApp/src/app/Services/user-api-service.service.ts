@@ -32,8 +32,8 @@ export class UserApiService {
     return this.http.post(this.baseUrl+`/questions/post`,question);
   }
 
-  getQuestions(){
-    return this.http.get<QuestionViewModel[]>(this.baseUrl+`/questions`);
+  getQuestions(userId:string){
+    return this.http.get<QuestionViewModel[]>(this.baseUrl+`/questions/${userId}`);
   }
 
   postAnswer(answer:AnswerAddViewModel){
@@ -42,5 +42,9 @@ export class UserApiService {
 
   getAnswers(qid:number){
     return this.http.get<AnswerViewModel[]>(this.baseUrl+`/answers/get/${qid}/${sessionStorage.getItem('userId')}`);
+  }
+
+  getUser(userId:string){
+    return this.http.get<UsersDataViewModel>(this.baseUrl+`/users/${userId}`);
   }
 }
