@@ -1,15 +1,8 @@
-﻿using CorporateQNA.Models;
-using CorporateQNA.Models.DbModels;
-using CorporateQNA.Models.ViewModels;
+﻿using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using PetaPoco;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CorporateQNA.Services
 {
@@ -30,7 +23,7 @@ namespace CorporateQNA.Services
 
         public UserDataViewModel GetUser(string id)
         {
-            var Result = _db.SingleOrDefault<UserDataViewModel>("Select * from UserCardView where Id = @0",id);
+            var Result = _db.SingleOrDefault<UserDataViewModel>("Select * from UserCardView where Id = @0", id);
 
             return Result;
         }

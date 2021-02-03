@@ -16,7 +16,7 @@ namespace CorporateQNA.Services
         public QuestionService(IConfiguration configuration,
                                 AutoMapper.IMapper mapper)
         {
-            _db = new Database(configuration.GetConnectionString("DefaultConnection"),"System.Data.SqlClient");
+            _db = new Database(configuration.GetConnectionString("DefaultConnection"), "System.Data.SqlClient");
             _mapper = mapper;
         }
 
@@ -31,11 +31,9 @@ namespace CorporateQNA.Services
 
         public List<QuestionViewModel> GetQuestions(string userId)
         {
-            var Result=new List<QuestionViewModel>();
-            if (userId == null)
-                userId = "0";    
+            var Result = new List<QuestionViewModel>();
             Result = _db.Fetch<QuestionViewModel>(";Exec GetQuestions @0", userId);
-            
+
             return Result;
         }
 
@@ -56,10 +54,10 @@ namespace CorporateQNA.Services
             }
         }
 
-       
+
         public void Upvote(QuestionActivity activity)
         {
-            var Act = _db.SingleOrDefault<CorporateQNA.Models.DbModels.QuestionActivity>("where ActivityBy=@0 and QuestionId=@1",activity.ActivityBy,activity.QuestionId);
+            var Act = _db.SingleOrDefault<CorporateQNA.Models.DbModels.QuestionActivity>("where ActivityBy=@0 and QuestionId=@1", activity.ActivityBy, activity.QuestionId);
 
             if (Act != null)
             {

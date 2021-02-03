@@ -30,12 +30,12 @@ namespace CorporateQNA.Services
         {
             var User = _userManager.GetUserAsync(context.Subject).Result;
 
-            var Info = _db.FirstOrDefault<UserInfo>("where Id = @0",User.Id);
+            var Info = _db.FirstOrDefault<UserInfo>("where Id = @0",User.UserId);
             
             var Claims = new List<Claim>()
             {
                 new Claim(JwtClaimTypes.Email,User.UserName),
-                new Claim(JwtClaimTypes.Id,Info.Id.ToString()),
+                new Claim(JwtClaimTypes.Id,User.UserId.ToString()),
                 new Claim(JwtClaimTypes.Name,Info.FullName),
                 new Claim(JwtClaimTypes.Picture,Info.ImageUrl),
             };

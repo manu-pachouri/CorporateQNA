@@ -14,6 +14,6 @@ namespace CorporateQNA.Models.DbModels
         public ApplicationUser():base() { }
         public ApplicationUser(string email) : base(email) { }
 
-        public int UserId { get; set; }
+        public long UserId { get; set; }
     }
 }

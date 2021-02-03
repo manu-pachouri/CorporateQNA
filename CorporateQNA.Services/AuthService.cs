@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using PetaPoco;
 using CorporateQNA.Models.DbModels;
+using System;
 
 namespace CorporateQNA.Services
 {
@@ -23,7 +24,6 @@ namespace CorporateQNA.Services
         private UserManager<ApplicationUser> _userManager { get; }
         private Database _db { get; }
 
-
         public async Task<bool> Login(LoginViewModel Login)
         {
             var Result = await _signInManager.PasswordSignInAsync(Login.Email, Login.Password, false, false);
@@ -35,7 +35,8 @@ namespace CorporateQNA.Services
             var User = new ApplicationUser(model.Email);
             var Result = await _userManager.CreateAsync(User, model.Password);
 
-            var UserInfo = new UserInfo() { 
+            var UserInfo = new UserInfo()
+            {
                 Id = User.UserId,
                 FullName = model.FullName,
                 ImageUrl = model.ImageUrl,
@@ -44,7 +45,12 @@ namespace CorporateQNA.Services
                 Role = model.Role,
                 Team = model.Team
             };
+
+            _db.BeginTransaction();
+            _db.Execute("Set IDENTITY_INSERT dbo.UsersInfo ON");
             _db.Insert(UserInfo);
+            _db.Execute("Set IDENTITY_INSERT dbo.UsersInfo OFF");
+            _db.CompleteTransaction();
 
             if (Result.Succeeded)
             {

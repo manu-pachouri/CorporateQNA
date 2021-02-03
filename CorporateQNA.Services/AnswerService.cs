@@ -26,9 +26,9 @@ namespace CorporateQNA.Services
             _db.Insert(Answer);
         }
 
-        public List<AnswerViewModel> GetAnswers(int qid,string userId)
+        public List<AnswerViewModel> GetAnswers(int qid, string userId)
         {
-            var sql = Sql.Builder.Append(";EXEC GetAnswers @0,@1", userId,qid);
+            var sql = Sql.Builder.Append(";EXEC GetAnswers @0,@1", userId, qid);
 
             var Result = _db.Fetch<AnswerViewModel>(sql);
             return Result;
@@ -37,7 +37,7 @@ namespace CorporateQNA.Services
 
         public void PostActivity(AnswerActivity answerActivity)
         {
-            if(answerActivity.Activity != Activity.UpVote)
+            if (answerActivity.Activity != Activity.UpVote)
             {
                 var Act = _db.FirstOrDefault<AnswerActivity>("where AnswerId=@0 and ActivityBy = @1", answerActivity.AnswerId, answerActivity.ActivityBy);
 
@@ -45,7 +45,7 @@ namespace CorporateQNA.Services
                 {
                     _db.Insert(answerActivity);
                 }
-                else if(Act.Activity != answerActivity.Activity)
+                else if (Act.Activity != answerActivity.Activity)
                 {
                     Act.Activity = answerActivity.Activity;
                     _db.Save(_mapper.Map<CorporateQNA.Models.DbModels.AnswerActivity>(Act));
@@ -56,12 +56,12 @@ namespace CorporateQNA.Services
         public void MarkAsBest(Answer answer)
         {
             var CurrAns = _db.FirstOrDefault<Answer>("where AnswerOf=@0 and MarkedAsBest=1", answer.AnswerOf);
-            if (CurrAns!=null)
+            if (CurrAns != null)
             {
                 CurrAns.MarkedAsBest = false;
                 _db.Save(CurrAns);
             }
-            var newAns = _db.SingleOrDefault<Answer>("where Id=@0",answer.Id);
+            var newAns = _db.SingleOrDefault<Answer>("where Id=@0", answer.Id);
             newAns.MarkedAsBest = answer.MarkedAsBest;
             _db.Save(newAns);
         }

@@ -1,7 +1,7 @@
 ﻿using CorporateQNA.Models.ViewModels;
 using PetaPoco;
 
-namespace CorporateQNA.Models
+namespace CorporateQNA.Models.DbModels
 {
     [TableName("UsersInfo")]
     [PrimaryKey("UserId",AutoIncrement =false)]
