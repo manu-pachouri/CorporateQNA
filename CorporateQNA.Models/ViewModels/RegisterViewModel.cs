@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CorporateQNA.Models.ViewModels
 {
     public class RegisterViewModel
-    {
+    { 
         [Required]
         public string FullName { get; set; }
         [Required]

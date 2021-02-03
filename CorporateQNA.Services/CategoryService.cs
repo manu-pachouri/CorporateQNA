@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CorporateQNA.Models.DbModels;
+using CorporateQNA.Models.CoreModels;
 using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -28,9 +28,9 @@ namespace CorporateQNA.Services
             return _db.Fetch<CategoryViewModel>("Select * from CategoryViewModel");
         }
 
-        public void AddCategory(CategoryAddViewModel category)
+        public void AddCategory(Category category)
         {
-            var Categ = _mapper.Map<Category>(category);
+            var Categ = _mapper.Map<CorporateQNA.Models.DbModels.Category>(category);
             _db.Insert(Categ);
 
         }

@@ -200,8 +200,16 @@ select {
   background-size: contain;
 }
 
-.NgxEditor__Wrapper .NgxEditor__Content {
-  height: 140px !important;
+.NgxEditor__Content {
+  height: 225px !important;
+}
+
+.big-editor{
+  position: fixed; 
+  right: 0px; 
+  bottom: 0px;
+  height: 300px;
+  width: 600px;
 }
 
 .modal {

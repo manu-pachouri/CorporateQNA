@@ -1,4 +1,5 @@
-﻿using CorporateQNA.Models.ViewModels;
+﻿using CorporateQNA.Models.CoreModels;
+using CorporateQNA.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace CorporateQNA.Services.Interfaces
     public interface ICategoryService
     {
         public List<CategoryViewModel> GetCategories();
-        public void AddCategory(CategoryAddViewModel category);
+        public void AddCategory(Category category);
     }
 }

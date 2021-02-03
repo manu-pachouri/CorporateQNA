@@ -1,14 +1,10 @@
 ﻿using CorporateQNA.Models;
-using CorporateQNA.Models.DbModels;
+using CorporateQNA.Models.CoreModels;
 using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using PetaPoco;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CorporateQNA.Services
 {
@@ -24,9 +20,9 @@ namespace CorporateQNA.Services
         private Database _db { get; }
         public AutoMapper.IMapper _mapper { get; }
 
-        public void AddAnswer(AnswerAddViewModel answer)
+        public void AddAnswer(Answer answer)
         {
-            var Answer = _mapper.Map<Answer>(answer);
+            var Answer = _mapper.Map<CorporateQNA.Models.DbModels.Answer>(answer);
             _db.Insert(Answer);
         }
 
@@ -41,7 +37,7 @@ namespace CorporateQNA.Services
 
         public void PostActivity(AnswerActivity answerActivity)
         {
-            if(answerActivity.Activity != (int)Activity.UpVote)
+            if(answerActivity.Activity != Activity.UpVote)
             {
                 var Act = _db.FirstOrDefault<AnswerActivity>("where AnswerId=@0 and ActivityBy = @1", answerActivity.AnswerId, answerActivity.ActivityBy);
 
@@ -52,7 +48,7 @@ namespace CorporateQNA.Services
                 else if(Act.Activity != answerActivity.Activity)
                 {
                     Act.Activity = answerActivity.Activity;
-                    _db.Save(Act);
+                    _db.Save(_mapper.Map<CorporateQNA.Models.DbModels.AnswerActivity>(Act));
                 }
             }
         }

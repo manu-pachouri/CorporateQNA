@@ -13,10 +13,6 @@ namespace CorporateQNA.Services.Mappings
     {
         public Mappings()
         {
-            CreateMap<Question,QuestionAddViewModel>();
-            CreateMap<QuestionAddViewModel, Question>();
-            CreateMap<CategoryAddViewModel, Category>();
-            CreateMap<AnswerAddViewModel, Answer>();
         }
     }
 }

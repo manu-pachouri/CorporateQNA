@@ -1,26 +1,17 @@
-﻿using PetaPoco;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CorporateQNA.Models.DbModels
+namespace CorporateQNA.Models.CoreModels
 {
-    [TableName("QuestionActivities")]
-    [PrimaryKey("Id")]
     public class QuestionActivity
     {
-        [Column]
         public int Id { get; set; }
-        [Column]
         public int QuestionId { get; set; }
-        [Column]
         public bool Viewed { get; set; }
-        [Column]
-        public short Activity { get; set; }
-        [Column]
+        public Activity Activity { get; set; }
         public long ActivityBy { get; set; }
     }
-}       
+}

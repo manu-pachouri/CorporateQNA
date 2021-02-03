@@ -18,7 +18,7 @@ namespace CorporateQNA.Models.DbModels
         [Column]
         public string Description { get; set; }
         [Column]
-        public string AddedBy { get; set; }
+        public long AddedBy { get; set; }
         [Column]
         public DateTime AddedOn { get; set; }
     }

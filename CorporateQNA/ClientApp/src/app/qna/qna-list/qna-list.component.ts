@@ -30,6 +30,7 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
   formGroup:FormGroup;
   activeQuestion:QuestionViewModel;
   userId:string;
+  bigEditor:boolean;
   
   //ngx editor 
   editor:Editor = new Editor({
@@ -296,16 +297,9 @@ export class QnaListComponent implements OnInit,OnDestroy,DoCheck {
     );
 
   }
+
+  toggleEditor(){
+    this.bigEditor = this.bigEditor == true?false:true;
+  }
   
 }
-
-// function getDescendantPropValue(obj, modelName) {
-//   console.log("modelName " + modelName);
-//   var arr = modelName.split(".");
-//   var val = obj;
-//   for (var i = 0; i < arr.length; i++) {
-//       val = val[arr[i]];
-//   }
-//   console.log("Val values final  : " + JSON.stringify(val));
-//   return val;
-// }

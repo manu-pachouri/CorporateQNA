@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using CorporateQNA.Models;
 using IdentityModel;
+using CorporateQNA.Models.DbModels;
 
 namespace CorporateQNA.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public Database _db { get; }
 
-        public ProfileService(UserManager<IdentityUser> userManager,IConfiguration configuration)
+        public ProfileService(UserManager<ApplicationUser> userManager,IConfiguration configuration)
         {
             _userManager = userManager;
             _db = new Database(configuration.GetConnectionString("DefaultConnection"),"System.Data.SqlClient");
@@ -34,7 +35,7 @@ namespace CorporateQNA.Services
             var Claims = new List<Claim>()
             {
                 new Claim(JwtClaimTypes.Email,User.UserName),
-                new Claim(JwtClaimTypes.Id,User.Id),
+                new Claim(JwtClaimTypes.Id,Info.Id.ToString()),
                 new Claim(JwtClaimTypes.Name,Info.FullName),
                 new Claim(JwtClaimTypes.Picture,Info.ImageUrl),
             };

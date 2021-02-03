@@ -1,4 +1,4 @@
-﻿using CorporateQNA.Models.DbModels;
+﻿using CorporateQNA.Models.CoreModels;
 using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -27,7 +27,7 @@ namespace CorporateQNA.Controllers
         }
 
         [Route("post")]
-        public void PostAnswer(AnswerAddViewModel answer)
+        public void PostAnswer(Answer answer)
         {
             _answerService.AddAnswer(answer);
         }

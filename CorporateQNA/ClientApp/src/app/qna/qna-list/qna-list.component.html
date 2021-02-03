@@ -30,23 +30,28 @@
                 </div>
             </div>
         </div>
-        <div style="background-color: #cccbcb;" class="py-1 pl-3 font-weight-bolder">
+        <div style="background-color: #cccbcb;" class="py-1 pl-3 border-bottom"
+        style="font-weight: 500;">
             ANSWERS ({{activeQuestion.answersCount}})
         </div>
         <div>
             <app-qna-answers *ngFor="let answer of answers" [answer]="answer"></app-qna-answers>
         </div>
-        <form *ngIf="showFilters" class="NgxEditor__Wrapper font-size-13px ml-3" style="position: relative; margin-top: 50px;"
-            [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
-            <ngx-editor [editor]="editor" editable="true" [placeholder]="html" formControlName="editorContent">
-            </ngx-editor>
-            <div class="d-flex align-items-center">
-                <fa-icon [icon]="Icons.expand" size="2x" class="pl-2 cursor-ptr" (click)="openModal(modal); "></fa-icon>
-                <button type="submit" class="button ml-auto">
-                    <fa-icon [icon]="Icons.send"></fa-icon>
-                </button>
-            </div>
+        <form *ngIf="showFilters" class="NgxEditor__Wrapper font-size-13px ml-3"
+          [formGroup]="formGroup" (ngSubmit)="onSubmit()"
+          [ngClass]="{'big-editor':bigEditor == true,
+        'bg-white':bigEditor,
+          'mt-4':!bigEditor}">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"></ngx-editor-menu>
+          <ngx-editor [editor]="editor" editable="true" [placeholder]="html" formControlName="editorContent">
+          </ngx-editor>
+          <div class="d-flex align-items-center">
+              <fa-icon [icon]="Icons.expand" size="2x" class="pl-2 cursor-ptr"
+              (click)="toggleEditor()"></fa-icon>
+              <button type="submit" class="button ml-auto">
+                  <fa-icon [icon]="Icons.send"></fa-icon>
+              </button>
+          </div>
         </form>
     </div>
 </div>

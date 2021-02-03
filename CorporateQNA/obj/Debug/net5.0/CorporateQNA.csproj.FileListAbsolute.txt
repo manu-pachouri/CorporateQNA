@@ -8,14 +8,6 @@ C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\obj\Debug\net5.0\Corpor
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\obj\Debug\net5.0\CorporateQNA.RazorAssemblyInfo.cs
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\appsettings.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\angular.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\e2e\tsconfig.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\package-lock.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\package.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\tsconfig.app.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\tsconfig.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\tsconfig.spec.json
-C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\ClientApp\tslint.json
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\CorporateQNA.exe
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\CorporateQNA.deps.json
 C:\Users\user\Documents\GitHub\CorporateQNA\CorporateQNA\bin\Debug\net5.0\CorporateQNA.runtimeconfig.json

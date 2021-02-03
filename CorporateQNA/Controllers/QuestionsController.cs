@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
-using CorporateQNA.Models.DbModels;
+using CorporateQNA.Models.CoreModels;
 
 namespace CorporateQNA.Controllers
 {
@@ -28,7 +28,7 @@ namespace CorporateQNA.Controllers
         }
 
         [Route("post")]
-        public void PostQuestion(QuestionAddViewModel question)
+        public void PostQuestion(Question question)
         {
             _questionService.AddQuestion(question);
         }

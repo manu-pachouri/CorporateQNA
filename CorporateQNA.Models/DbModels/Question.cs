@@ -14,7 +14,7 @@ namespace CorporateQNA.Models.DbModels
         [Column]
         public int Id { get; set; }
         [Column]
-        public string AskedBy{ get; set; }
+        public long AskedBy{ get; set; }
         [Column]
         public string Title { get; set; }
         [Column]

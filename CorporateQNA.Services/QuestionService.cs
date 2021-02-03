@@ -1,4 +1,4 @@
-﻿using CorporateQNA.Models.DbModels;
+﻿using CorporateQNA.Models.CoreModels;
 using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -23,9 +23,9 @@ namespace CorporateQNA.Services
         private Database _db { get; }
         private AutoMapper.IMapper _mapper { get; }
 
-        public void AddQuestion(QuestionAddViewModel question)
+        public void AddQuestion(Question question)
         {
-            var Question = _mapper.Map<Question>(question);
+            var Question = _mapper.Map<CorporateQNA.Models.DbModels.Question>(question);
             _db.Insert(Question);
         }
 
@@ -41,13 +41,13 @@ namespace CorporateQNA.Services
 
         public void AddViewActivity(QuestionActivity questionActivity)
         {
-            var Act = _db.SingleOrDefault<QuestionActivity>
+            var Act = _db.SingleOrDefault<CorporateQNA.Models.DbModels.QuestionActivity>
                 ("where QuestionId=@0 and ActivityBy=@1",
                 questionActivity.QuestionId, questionActivity.ActivityBy);
 
             if (Act == null)
             {
-                _db.Insert(questionActivity);
+                _db.Insert(_mapper.Map<CorporateQNA.Models.DbModels.QuestionActivity>(questionActivity));
             }
             else
             {
@@ -59,16 +59,16 @@ namespace CorporateQNA.Services
        
         public void Upvote(QuestionActivity activity)
         {
-            var Act = _db.SingleOrDefault<QuestionActivity>("where ActivityBy=@0 and QuestionId=@1",
-                                                                activity.ActivityBy,activity.QuestionId);
+            var Act = _db.SingleOrDefault<CorporateQNA.Models.DbModels.QuestionActivity>("where ActivityBy=@0 and QuestionId=@1",activity.ActivityBy,activity.QuestionId);
+
             if (Act != null)
             {
-                Act.Activity = activity.Activity;
+                Act.Activity = (short)activity.Activity;
                 _db.Save(Act);
             }
             else
             {
-                _db.Insert(activity);
+                _db.Insert(_mapper.Map<CorporateQNA.Models.DbModels.QuestionActivity>(activity));
             }
         }
     }

@@ -16,8 +16,8 @@ namespace CorporateQNA.Models.DbModels
         [Column]
         public int AnswerId { get; set; }
         [Column]
-        public int Activity { get; set; }
+        public short Activity { get; set; }
         [Column]
-        public string ActivityBy { get; set; }
+        public long ActivityBy { get; set; }
     }
 }

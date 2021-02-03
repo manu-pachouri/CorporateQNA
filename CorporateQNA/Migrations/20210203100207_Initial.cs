@@ -14,8 +14,8 @@ namespace CorporateQNA.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnswerId = table.Column<int>(type: "int", nullable: false),
-                    Activity = table.Column<int>(type: "int", nullable: false),
-                    ActivityBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Activity = table.Column<short>(type: "smallint", nullable: false),
+                    ActivityBy = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,8 +30,9 @@ namespace CorporateQNA.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnswerOf = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AnsweredOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AnsweredBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    AnsweredOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()"),
+                    AnsweredBy = table.Column<long>(type: "bigint", nullable: false),
+                    MarkedAsBest = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,6 +58,8 @@ namespace CorporateQNA.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "100, 1"),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -85,8 +88,8 @@ namespace CorporateQNA.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AddedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    AddedBy = table.Column<long>(type: "bigint", nullable: false),
+                    AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()")
                 },
                 constraints: table =>
                 {
@@ -101,8 +104,8 @@ namespace CorporateQNA.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionId = table.Column<int>(type: "int", nullable: false),
                     Viewed = table.Column<bool>(type: "bit", nullable: false),
-                    Activity = table.Column<int>(type: "int", nullable: false),
-                    ActivityBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Activity = table.Column<short>(type: "smallint", nullable: false),
+                    ActivityBy = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,10 +118,10 @@ namespace CorporateQNA.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AskedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AskedBy = table.Column<long>(type: "bigint", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AskedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AskedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()"),
                     Category = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -130,7 +133,8 @@ namespace CorporateQNA.Migrations
                 name: "UsersInfo",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Designation = table.Column<string>(type: "nvarchar(max)", nullable: true),

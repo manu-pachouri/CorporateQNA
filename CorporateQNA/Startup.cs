@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 using AutoMapper;
 using CorporateQNA.Models;
+using CorporateQNA.Models.DbModels;
 using CorporateQNA.Services;
 using CorporateQNA.Services.Interfaces;
 using IdentityServerHost.Quickstart.UI;
@@ -49,7 +50,7 @@ namespace IdentityServer
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IAnswerService,AnswerService>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(opt =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;
@@ -66,7 +67,7 @@ namespace IdentityServer
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddTestUsers(TestUsers.Users)
-                .AddAspNetIdentity<IdentityUser>()
+                .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<ProfileService>();
 
             // not recommended for production - you need to store your key material somewhere secure

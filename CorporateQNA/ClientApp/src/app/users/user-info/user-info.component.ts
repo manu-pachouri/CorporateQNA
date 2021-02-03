@@ -3,7 +3,6 @@ import { UsersDataViewModel } from './../../Models/UsersDataViewModel';
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Icons } from 'src/app/shared/font-awesome-icons';
-import { UserPageService } from 'src/app/Services/user-page.service';
 
 @Component({
   selector: 'app-user-info',
@@ -20,8 +19,7 @@ export class UserInfoComponent implements OnInit {
   constructor(private router:Router,
               private route:ActivatedRoute,
               private resolver:ComponentFactoryResolver,
-              private userApiService:UserApiService,
-              private userService:UserPageService) { }
+              private userApiService:UserApiService) { }
 
   ngOnInit(): void {
     this.active = 'allquestions';

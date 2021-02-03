@@ -1,4 +1,5 @@
-﻿using CorporateQNA.Models.ViewModels;
+﻿using CorporateQNA.Models.CoreModels;
+using CorporateQNA.Models.ViewModels;
 using CorporateQNA.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace CorporateQNA.Controllers
         }
 
         [Route("post")]
-        public void PostCategory(CategoryAddViewModel category)
+        public void PostCategory(Category category)
         {
             _categoryService.AddCategory(category);
         }

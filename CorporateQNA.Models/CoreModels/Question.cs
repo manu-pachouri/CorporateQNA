@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CorporateQNA.Models.ViewModels
+namespace CorporateQNA.Models.CoreModels
 {
-    public class QuestionAddViewModel
+    public class Question
     {
-        public string AskedBy { get; set; }
+        public int Id { get; set; }
+        public long AskedBy { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime AskedOn { get; set; }
