@@ -1,5 +1,5 @@
 export class QuestionAddViewModel{
-    askedBy:string;
+    askedBy:number;
     title:string;
     description:string;
     askedOn:Date;

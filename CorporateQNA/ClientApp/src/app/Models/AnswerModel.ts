@@ -9,13 +9,13 @@ export class AnswerAddViewModel {
   answerOf: number;
   description: string;
   answeredOn: Date;
-  answeredBy: string;
+  answeredBy: number;
 }
 
 export class AnswerViewModel {
   id: number;
   description: string;
-  answeredBy: string;
+  answeredBy: number;
   answeredOn: string;
   answerOf:number;
   imageUrl: string;
@@ -28,5 +28,5 @@ export class AnswerViewModel {
 export class AnswerActivityModel{
   answerId:number;
   activity:Activity;
-  activityBy:string;
+  activityBy:number;
 }

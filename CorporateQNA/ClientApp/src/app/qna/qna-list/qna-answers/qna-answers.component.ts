@@ -71,7 +71,7 @@ export class QnaAnswersComponent implements OnInit {
     if(sessionStorage.getItem('userId')){
       let ansAct = new AnswerActivityModel();
       ansAct.answerId = this.answer.id;
-      ansAct.activityBy = sessionStorage.getItem('userId');
+      ansAct.activityBy = parseInt(sessionStorage.getItem('userId'));
       ansAct.activity = activity;
 
       this.activityService.AnswerActivity(ansAct).subscribe(

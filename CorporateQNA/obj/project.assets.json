@@ -2346,10 +2346,7 @@
         },
         "runtime": {
           "bin/placeholder/CorporateQNA.Services.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },

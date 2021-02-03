@@ -32,7 +32,9 @@ export class UserApiService {
     return this.http.post(this.baseUrl+`/questions/post`,question);
   }
 
-  getQuestions(userId:string){
+  getQuestions(userId:number){
+    if(!userId)
+      userId = 0;
     return this.http.get<QuestionViewModel[]>(this.baseUrl+`/questions/${userId}`);
   }
 

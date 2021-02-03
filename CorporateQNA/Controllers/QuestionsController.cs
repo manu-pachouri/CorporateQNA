@@ -22,7 +22,7 @@ namespace CorporateQNA.Controllers
         public IQuestionService _questionService { get; }
 
         [Route("{userId}")]
-        public List<QuestionViewModel> GetAllQuestions(string userId)
+        public List<QuestionViewModel> GetAllQuestions(long userId)
         {
             return _questionService.GetQuestions(userId);
         }

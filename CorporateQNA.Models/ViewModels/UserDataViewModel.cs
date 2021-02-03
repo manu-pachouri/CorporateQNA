@@ -8,7 +8,7 @@ namespace CorporateQNA.Models.ViewModels
 {
     public class UserDataViewModel
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
         public string FullName { get; set; }
         public string ImageUrl { get; set; }
         public string Designation { get; set; }

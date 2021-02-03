@@ -29,7 +29,7 @@ namespace CorporateQNA.Services
             _db.Insert(Question);
         }
 
-        public List<QuestionViewModel> GetQuestions(string userId)
+        public List<QuestionViewModel> GetQuestions(long userId)
         {
             var Result = new List<QuestionViewModel>();
             Result = _db.Fetch<QuestionViewModel>(";Exec GetQuestions @0", userId);

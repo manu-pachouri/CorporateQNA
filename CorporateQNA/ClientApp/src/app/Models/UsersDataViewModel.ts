@@ -1,5 +1,5 @@
 export class UsersDataViewModel{
-    id:string;
+    id:number;
     fullName:string;
     imageUrl:string;
     designation:string;

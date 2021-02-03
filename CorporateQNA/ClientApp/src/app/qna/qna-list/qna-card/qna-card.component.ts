@@ -35,7 +35,7 @@ export class QnaCardComponent implements OnInit,DoCheck {
     activity.activity = Activity.none;
     activity.viewed = true;
     activity.questionId = this.question.id;
-    activity.activityBy = sessionStorage.getItem('userId');
+    activity.activityBy = parseInt(sessionStorage.getItem('userId'));
     this.userActivityService.viewQuestion(activity).subscribe(
       ()=>console.log('question viewed')
     );
@@ -59,7 +59,7 @@ export class QnaCardComponent implements OnInit,DoCheck {
     if(sessionStorage.getItem('userId')){
       let activity = new QuestionActivityViewModel();
       activity.activity=act;
-      activity.activityBy=sessionStorage.getItem('userId');
+      activity.activityBy= parseInt(sessionStorage.getItem('userId'));
       activity.questionId=this.question.id;
 
       this.userActivityService.upVoteQuestion(activity)

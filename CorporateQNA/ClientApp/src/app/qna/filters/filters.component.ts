@@ -89,7 +89,7 @@ export class FiltersComponent implements OnInit {
     if(this.questionFormGroup.valid && sessionStorage.getItem('userId')){
       console.log(this.questionFormGroup.value['editorContent']['content'][0]['content'][0]['text']);
       let question = new QuestionAddViewModel();
-      question.askedBy = sessionStorage.getItem('userId');
+      question.askedBy = Number(sessionStorage.getItem('userId'));
       question.description = this.questionFormGroup.value['editorContent']['content'][0]['content'][0]['text'];
       question.title = this.questionFormGroup.get('question').value;
       question.Category = this.questionFormGroup.get('category').value;

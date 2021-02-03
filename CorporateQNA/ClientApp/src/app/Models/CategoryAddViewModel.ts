@@ -1,6 +1,6 @@
 export class CategoryAddViewModel{
     title:string;
     description:string;
-    addedBy:string;
+    addedBy:number;
     addedOn:Date;
 }

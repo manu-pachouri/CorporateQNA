@@ -10,7 +10,7 @@ export class QuestionActivityViewModel {
   questionId: number;
   viewed: boolean;
   activity: Activity;
-  activityBy: string;
+  activityBy: number;
 }
 
 export class questionFilters {
